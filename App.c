@@ -3,7 +3,89 @@
 #include <string.h>
 #define  capacidadeProfBD 20
 #define  quantMaterias 10
- /*teste*/
+#define  capacidadeAlunoBD 40
+typedef struct{
+    int matricula;
+    char nome[50];
+    int materias[qtdmaterias];
+
+} Aluno;
+
+Aluno Repository_BD_Aluno[capacidadeAlunoBD];
+
+//Função para o cadastro dos alunos
+int cadastrarAluno(){
+    Aluno aluno;
+    int n;
+    static int matricularef = 1000 ;
+
+    printf("Digite o nome do aluno : \n");
+    gets(aluno.nome);
+    printf("Digite o número de matérias que o aluno cursa : \n");
+    scanf("%d", &n);
+
+    for(int i=0;i<n;i++){
+        printf("DIgite o código da matéria :");
+        scanf("%d", &aluno.materias[i]);
+
+
+
+    }
+    for(int i=0;i<capacidadeAlunoBD;i++){
+        if(Repository_BD_Aluno[i].matricula == 0){
+            aluno.matricula = matriculaRef;
+            Repository_BD_Aluno[i] = aluno;
+            matricularef++;
+            printf("Aluno cadastrado com matrícula : %d", aluno.matricula);
+            break;
+        }
+
+
+    }
+
+    return 0;
+
+}
+//Função para a listagem dos alunos
+
+ int listarAlunos(){
+    printf("---------LISTA DE ALUNOS----------");
+    for(int i=0;i < capacidadeAlunoBD;i++);{
+        if(Repository_BD_Aluno[i].matricula != 0){
+            printf("Matrícula %d | Nome : %d | Matérias: ", 
+                Repository_BD_Aluno[i].matricula, Repository_BD_Aluno[i].nome);
+       
+                for(int j=0;j < quantMaterias; j++){
+                    if (Repository_BD_Aluno[i].materias[j] != 0)
+                    printf("%d", Repository_BD_Aluno[i].materias[j]);
+                }
+                printf("\n");
+            }
+    }
+    return 0;
+ }
+
+ //Função para deletar o aluno através da matrícula
+
+    int deletarAlunoPorMatricula(){
+        for (int i = 0; i < capacidadeAlunoBD; i++){
+            if (Repository_BD_Aluno[i].matricula == matricula){
+                Repository_BD_Aluno[i].matricula = 0 ;
+                Repository_BD_Aluno[i].nome = '\0';
+                for (int j = 0; j < capacidadeAlunoBD ; j++)
+                {
+                    Repository_BD_Aluno[i].materias[j] = 0;
+                }
+                printf("Aluno com a matrícula %d deletado com sucesso !", matricula)
+                break ;
+                 }
+            
+            
+               }  
+               return 0;
+            }
+        
+    }
 typedef struct {
     int id; 
     char nome[20];
