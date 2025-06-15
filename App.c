@@ -3,7 +3,7 @@
 #include <string.h>
 #define  capacidadeProfBD 20
 #define  quantMaterias 10
-
+ /*teste*/
 typedef struct {
     int id; 
     char nome[20];
