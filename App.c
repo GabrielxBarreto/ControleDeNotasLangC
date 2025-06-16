@@ -4,6 +4,29 @@
 #include "aluno.h"
 #include "professor.h"
 int areaDeTrabalhoProfessor(int id){
+
+                                             
+                                             
+                                             
+                                             
+                                             
+                                             
+//arte para os adms                                             
+printf("\n   :#############:   \n");            
+printf("  =###############=  \n");            
+printf("  *##=::.*#*.::=##*  \n");            
+printf("  *##.  =###=  :##*  \n");            
+printf("  =###############=  \n");            
+printf("   #######*######*   \n");            
+printf("   .+##*******##+.   \n");            
+printf("     -###* *###-     \n");            
+printf("       -**:**-       \n");            
+                                         
+                                             
+                                             
+                                             
+                                             
+                                
 char nome[50];
 //int materias[20];
 char cpf[20];
@@ -12,7 +35,8 @@ for(int i = 0; i < capacidadeProfBD;i++){
         strcpy(nome,Repository_BD_Professor[i].nome);
         strcpy(cpf,Repository_BD_Professor[i].cpf);
     } 
-}          
+}
+//arte para os profs          
 printf("      adxnxnnda      \n");
 printf("    xxxxxnxnnnnnn               ID:%d\n",id);
 printf("  axxxxu     unnnua             NOME: %s\n",nome);
