@@ -17,7 +17,7 @@ Aluno Repository_BD_Aluno[capacidadeAlunoBD];
 int cadastrarAluno(){
     Aluno aluno;
     int n;
-    int static matriculaRef = 1000 ;
+    static int  matriculaRef = 1000 ;
 
     printf("Digite o nome do aluno : \n");
     scanf(" %[^\n]", aluno.nome);

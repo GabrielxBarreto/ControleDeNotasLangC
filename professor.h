@@ -5,8 +5,10 @@
 #define  capacidadeAlunoBD 20
 typedef struct {
     int id; 
-    char nome[20];
+    char nome[50];
+    char usuario[10];
     char cpf[20];
+    char senha[20];
     int materias[quantMaterias];
 
 }Professor;
@@ -22,7 +24,11 @@ int cadastroDeProfessor(){
     scanf(" %[^\n]", professor.nome);
     printf("Digite o CPF do professor que Deseja cadastrar:\n");
     scanf(" %[^\n]", professor.cpf);
-    printf("Digite o número de trumas que o professor %s deve assumir assumir:\n",professor.nome);
+    printf("Digite seu Usuário:\n");
+    scanf(" %[^\n]", professor.usuario);
+     printf("Digite sua senha:\n");
+    scanf(" %[^\n]", professor.senha);
+    printf("\nDigite o número de trumas que o professor %s deve assumir inicialmente:\n",professor.nome);
     scanf("%d",&n);
     for (int i = 0; i < n; i++)
     {
@@ -37,9 +43,11 @@ int cadastroDeProfessor(){
             Repository_BD_Professor[i].id = professor.id; 
             strcpy(Repository_BD_Professor[i].nome,professor.nome);
             strcpy(Repository_BD_Professor[i].cpf,professor.cpf);
+            strcpy(Repository_BD_Professor[i].senha,professor.senha);
+            strcpy(Repository_BD_Professor[i].usuario,professor.usuario);
 
             for (int j = 0; j < n; j++){
-                Repository_BD_Professor[i].materias[j] =professor.materias[j];
+                Repository_BD_Professor[i].materias[j] = professor.materias[j];
             }
             idRef++;
             break;
@@ -85,4 +93,17 @@ int deletePorID(int id){
     }
     
     return 0;
+}
+int logar(char usuario[], char senha[]){
+   
+    int codeVerify = 0;
+    for(int i = 0; i < capacidadeProfBD; i++){ 
+      if((strcmp(Repository_BD_Professor[i].usuario,usuario)==0 && strcmp(Repository_BD_Professor[i].senha,senha) == 0) == 1){
+        codeVerify = Repository_BD_Professor[i].id;
+        break;
+      }else{
+        codeVerify = -1;
+      }
+    }
+   return codeVerify;
 }
