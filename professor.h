@@ -18,7 +18,7 @@ Professor Repository_BD_Professor[capacidadeProfBD];
 int cadastroDeProfessor(){
     Professor professor;
     int n = 0;
-    int static idRef = 100; 
+    static int idRef = 100; 
     
     printf("Digite o nome do professor que Deseja cadastrar:\n");
     scanf(" %[^\n]", professor.nome);

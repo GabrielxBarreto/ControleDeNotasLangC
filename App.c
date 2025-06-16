@@ -54,7 +54,7 @@ int menu(){
     break;
    }
   } while (op!=3);
-    
+    return 0;
 }
 
 int main(){
