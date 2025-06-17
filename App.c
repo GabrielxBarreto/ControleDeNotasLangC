@@ -3,6 +3,38 @@
 #include <string.h>
 #include "aluno.h"
 #include "professor.h"
+//finalização impar - Humanas
+//finalização par - Exatas
+char  *conversorDeMaterias(int code){
+
+    switch (code)
+    {
+    case 2502://algoritimos
+        return "ALgoritimos";
+        break;
+    case 2504://pre calculo
+        return "Pré-Calculo";
+    break;
+
+    case 2506://Funamentos Matemáticos da Computação
+
+        return "Funamentos Matemáticos da Computação";
+    break;
+    case 2500://Funamentos da Computação
+    
+         return "Funamentos da Computação";
+    break;
+    case 2501://metodologia 
+    
+        return "Metodologia Científica";
+    break;
+    
+    default:
+        return "\0";
+        break;
+    }
+    
+}
 int areaDeTrabalhoProfessor(int id){
 
                                              
@@ -11,7 +43,7 @@ int areaDeTrabalhoProfessor(int id){
                                              
                                              
                                              
-//arte para os adms                                             
+/*arte para os adms                                             
 printf("\n   :#############:   \n");            
 printf("  =###############=  \n");            
 printf("  *##=::.*#*.::=##*  \n");            
@@ -20,7 +52,7 @@ printf("  =###############=  \n");
 printf("   #######*######*   \n");            
 printf("   .+##*******##+.   \n");            
 printf("     -###* *###-     \n");            
-printf("       -**:**-       \n");            
+printf("       -**:**-       \n"); */           
                                          
                                              
                                              
@@ -28,24 +60,52 @@ printf("       -**:**-       \n");
                                              
                                 
 char nome[50];
-//int materias[20];
+int materias[20];
 char cpf[20];
+char usuario[10];
 for(int i = 0; i < capacidadeProfBD;i++){
     if(Repository_BD_Professor[i].id == id){
         strcpy(nome,Repository_BD_Professor[i].nome);
         strcpy(cpf,Repository_BD_Professor[i].cpf);
+        strcpy(usuario,Repository_BD_Professor[i].usuario);
+         for (int j = 0; j < quantMaterias; j++){
+                 materias[i] = Repository_BD_Professor[i].materias[j];
+            }
+       
+        printf("%d", materias[i]);
     } 
 }
-//arte para os profs          
-printf("      adxnxnnda      \n");
-printf("    xxxxxnxnnnnnn               ID:%d\n",id);
-printf("  axxxxu     unnnua             NOME: %s\n",nome);
-printf(" axxxxx       nnnuua \n");
-printf(" hxxxxx.     .nnnuuh            CPF:%s\n",cpf);
-printf(" axxxxxxuhqhunnnnuua \n");
-printf("  xxxxa       annuu  \n");
-printf("   zx{         {nY   \n");
-printf("     b         k     \n");
+//arte para os profs
+int op = 0;    
+do{
+printf("      adxnxnnda                +-------------------------------------------------------------\n");
+printf("    xxxxxnxnnnnnn              | ID: %d\n",id);
+printf("  axxxxu     unnnua            | NOME: %s\n",nome);
+printf(" axxxxx       nnnuua           | USUÁRIO: %s\n",usuario);
+printf(" hxxxxx.     .nnnuuh           | CPF: %s\n",cpf);
+printf(" axxxxxxuhqhunnnnuua           +--------------------------------------------------------------\n");
+printf("  xxxxa       annuu            Matérias:\n");
+printf("   zx{         {nY             ");for(int i = 0; i < 3; i++){printf("%s ",conversorDeMaterias(materias[i]));};printf("\n");
+printf("     b         k               \n");for(int i=3 ; i < 5; i++){printf("%s ",conversorDeMaterias(materias[i]));};
+printf("\n1-criar uma nova turma\n2-Listar Alunos\n3-sair\n");
+scanf("%d",&op);  
+switch (op)
+{
+case 1:
+    criarTurma();
+    break;
+case 2:
+     listarAlunos();
+    break;
+case 3:
+     cadastrarAluno();
+    break;
+default:
+    break;
+}
+}while(op != 3);      
+
+
     return 0;
 }
 int menu(){
