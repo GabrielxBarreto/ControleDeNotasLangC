@@ -3,6 +3,7 @@
 #include <string.h>
 #include "aluno.h"
 #include "professor.h"
+#include "turma.h"
 //finalização impar - Humanas
 //finalização par - Exatas
 char  *conversorDeMaterias(int code){
@@ -58,18 +59,18 @@ printf("       -**:**-       \n"); */
                                              
                                              
                                              
-                                
+Professor p;                                
 char nome[50];
 int materias[20];
 char cpf[20];
 char usuario[10];
 for(int i = 0; i < capacidadeProfBD;i++){
     if(Repository_BD_Professor[i].id == id){
-        strcpy(nome,Repository_BD_Professor[i].nome);
-        strcpy(cpf,Repository_BD_Professor[i].cpf);
-        strcpy(usuario,Repository_BD_Professor[i].usuario);
+        strcpy(p.nome,Repository_BD_Professor[i].nome);
+        strcpy(p.cpf,Repository_BD_Professor[i].cpf);
+        strcpy(p.usuario,Repository_BD_Professor[i].usuario);
          for (int j = 0; j < quantMaterias; j++){
-                 materias[i] = Repository_BD_Professor[i].materias[j];
+                 p.materias[i] = Repository_BD_Professor[i].materias[j];
             }
        
         printf("%d", materias[i]);
@@ -78,21 +79,24 @@ for(int i = 0; i < capacidadeProfBD;i++){
 //arte para os profs
 int op = 0;    
 do{
-printf("      adxnxnnda                +-------------------------------------------------------------\n");
-printf("    xxxxxnxnnnnnn              | ID: %d\n",id);
-printf("  axxxxu     unnnua            | NOME: %s\n",nome);
-printf(" axxxxx       nnnuua           | USUÁRIO: %s\n",usuario);
-printf(" hxxxxx.     .nnnuuh           | CPF: %s\n",cpf);
-printf(" axxxxxxuhqhunnnnuua           +--------------------------------------------------------------\n");
+printf("\n");
+printf("      adxnxnnda                +-------------------------------------------------------------+\n");
+printf("    xxxxxnxnnnnnn              | ID: %d                                                      |\n",id);
+printf("  axxxxu     unnnua            | NOME: %s                                                    |\n",nome);
+printf(" axxxxx       nnnuua           | USUÁRIO: %s                                                 |\n",usuario);
+printf(" hxxxxx.     .nnnuuh           | CPF: %s                                                     |\n",cpf);
+printf(" axxxxxxuhqhunnnnuua           +-------------------------------------------------------------+\n");
 printf("  xxxxa       annuu            Matérias:\n");
 printf("   zx{         {nY             ");for(int i = 0; i < 3; i++){printf("%s ",conversorDeMaterias(materias[i]));};printf("\n");
 printf("     b         k               \n");for(int i=3 ; i < 5; i++){printf("%s ",conversorDeMaterias(materias[i]));};
-printf("\n1-criar uma nova turma\n2-Listar Alunos\n3-sair\n");
+printf("\n1-Criar uma nova turma\n2-Listar Alunos\n3-Cadastrar Alunos\n4-sair");
 scanf("%d",&op);  
 switch (op)
 {
 case 1:
-    criarTurma();
+    
+    criarTurma(p);
+    abrirTurma(p.id);
     break;
 case 2:
      listarAlunos();
@@ -103,7 +107,7 @@ case 3:
 default:
     break;
 }
-}while(op != 3);      
+}while(op != 4);      
 
 
     return 0;
