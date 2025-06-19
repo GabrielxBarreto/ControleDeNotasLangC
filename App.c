@@ -60,10 +60,7 @@ printf("       -**:**-       \n"); */
                                              
                                              
 Professor p;                                
-char nome[50];
-int materias[20];
-char cpf[20];
-char usuario[10];
+
 for(int i = 0; i < capacidadeProfBD;i++){
     if(Repository_BD_Professor[i].id == id){
         strcpy(p.nome,Repository_BD_Professor[i].nome);
@@ -73,7 +70,7 @@ for(int i = 0; i < capacidadeProfBD;i++){
                  p.materias[i] = Repository_BD_Professor[i].materias[j];
             }
        
-        printf("%d", materias[i]);
+        printf("%d", p.materias[i]);
     } 
 }
 //arte para os profs
@@ -82,13 +79,13 @@ do{
 printf("\n");
 printf("      adxnxnnda                +-------------------------------------------------------------+\n");
 printf("    xxxxxnxnnnnnn              | ID: %d                                                      |\n",id);
-printf("  axxxxu     unnnua            | NOME: %s                                                    |\n",nome);
-printf(" axxxxx       nnnuua           | USUÁRIO: %s                                                 |\n",usuario);
-printf(" hxxxxx.     .nnnuuh           | CPF: %s                                                     |\n",cpf);
+printf("  axxxxu     unnnua            | NOME: %s                                                    |\n",p.nome);
+printf(" axxxxx       nnnuua           | USUÁRIO: %s                                                 |\n",p.usuario);
+printf(" hxxxxx.     .nnnuuh           | CPF: %s                                                     |\n",p.cpf);
 printf(" axxxxxxuhqhunnnnuua           +-------------------------------------------------------------+\n");
 printf("  xxxxa       annuu            Matérias:\n");
-printf("   zx{         {nY             ");for(int i = 0; i < 3; i++){printf("%s ",conversorDeMaterias(materias[i]));};printf("\n");
-printf("     b         k               \n");for(int i=3 ; i < 5; i++){printf("%s ",conversorDeMaterias(materias[i]));};
+printf("   zx{         {nY             ");for(int i = 0; i < 3; i++){printf("%s ",conversorDeMaterias(p.materias[i]));};printf("\n");
+printf("     b         k               \n");for(int i=3 ; i < 5; i++){printf("%s ",conversorDeMaterias(p.materias[i]));};
 printf("\n1-Criar uma nova turma\n2-Listar Alunos\n3-Cadastrar Alunos\n4-sair");
 scanf("%d",&op);  
 switch (op)
