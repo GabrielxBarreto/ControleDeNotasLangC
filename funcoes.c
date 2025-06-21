@@ -26,6 +26,8 @@ void somaTotalNotas(Turma *turma, Aluno alunos[], int totalAlunos){
         }
 
     }
+    
+ }
     printf("Soma total dos alunos da turma : %.2f \n", soma);
 }
 
@@ -51,4 +53,24 @@ void somaNotasPorAluno(Turma *turma, Aluno alunos[], int totalAlunos){
         
     }
 
+}
+
+//Função que soma as notas por avaliação (coluna da matriz de notas) 
+//Requisito Funcional 3 : Calcular a soma das notas por avaliaçao aplicada
+void somaNotasPorAvaliacao(Turma *turma, Aluno alunos[], int totalAlunos){
+    for(int a=0; a <turma->nA ; a++){
+        float soma == 0;
+        for (int i = 0; i<40;i++){
+            int matricula = turma->listaDeAlunosInscritos[i];
+            if(matricula == 0)continue;
+
+            for(int j = 0; j< totalAlunos; j++){
+                if(alunos[j].matricula == matricula){
+                    soma += alunos[j].notas[a]
+                    break;
+                }
+            }
+        }
+        printf("Avaliação %d - Soma das notas : %.2f \n", a+1, soma);
+    }
 }
