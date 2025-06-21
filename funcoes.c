@@ -1,1 +1,31 @@
+
+
+#ifndef REQUISITOS_FUNCIONAIS_H
+#define REQUISITOS_FUNCIONAIS_H
+
 #include<stdio.h>
+#include "aluno.h"
+#include "professor.h"
+#include "turma.h"
+       
+
+//Função que soma todas as notas da turma
+//Requisito funcional 1 : Permitir a soma total das notas de todos os alunos da turma
+void somaTotalNotas(Turma *turma, Aluno alunos[], int totalAlunos){
+    float soma = 0;
+    for(int i = 0; i< 40;i++){
+        int matricula = turma->listaDeAlunosInscritos[i];
+        if(matricula==o)continue;
+
+        for(int j=0;j<totalAlunos;j++){
+            if (alunos[j].matricula == matricula) {
+             for (int k = 0; k < turma->nA; k++) {
+                    soma += alunos[j].notas[k];
+                }
+            break;
+        }
+
+    }
+    printf("Soma total dos alunos da turma : %.2f \n", soma)
+}
+
