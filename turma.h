@@ -51,15 +51,20 @@ do{
             printf("ERRO DE LEITURA");
             break;
     }   
-}while(op);
+}while(op != 5);
 }
 int criarTurma(Professor p){
     
     for(int i = 0; i < capacidadeDeTurmas; i++){
-        printf("Digite o numero de matricula de cada aluno:\n");
-        scanf("%d",&Repository_BD_Turma[i].listaDeAlunosInscritos[i]);
+        if(Repository_BD_Turma[i].codigoDaTurma == NULL){
+              printf("Digite o numero de matricula de cada aluno:\n");
+            scanf("%d",&Repository_BD_Turma[i].listaDeAlunosInscritos[i]);
         Repository_BD_Turma[i].codigoDaTurma = codrefT;
         Repository_BD_Turma[i].Idprof = p.id;
+        }else{
+            printf("A posição %d a lista de turmas esta ocupada", i);
+        }
+      
 
     }
     codrefT++;
