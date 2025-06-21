@@ -15,7 +15,7 @@ void somaTotalNotas(Turma *turma, Aluno alunos[], int totalAlunos){
     float soma = 0;
     for(int i = 0; i< 40;i++){
         int matricula = turma->listaDeAlunosInscritos[i];
-        if(matricula==o)continue;
+        if(matricula==0)continue;
 
         for(int j=0;j<totalAlunos;j++){
             if (alunos[j].matricula == matricula) {
@@ -26,6 +26,29 @@ void somaTotalNotas(Turma *turma, Aluno alunos[], int totalAlunos){
         }
 
     }
-    printf("Soma total dos alunos da turma : %.2f \n", soma)
+    printf("Soma total dos alunos da turma : %.2f \n", soma);
 }
 
+//Função que soma a nota que cada aluno individualmente
+//Requisito funcional 2 : Permitir a visualização da soma de notas por aluno
+void somaNotasPorAluno(Turma *turma, Aluno alunos[], int totalAlunos){
+    for(int i=0;i<40; i++){
+        int matricula = turma->listaDeAlunosInscritos[i];
+        if(matricula == 0) continue;
+
+        for (int j = 0; j < totalAlunos; j++) {
+            if(alunos[j].matricula == matricula){
+                float soma = 0;
+                for(int k = 0; k< turma->nA; k++){
+                    soma += alunos[j].notas[k];
+
+                }
+                printf("Aluno: %s | Matrícula: %d | Soma das notas: %.2f\n",alunos[j].nome, alunos[j].matricula , soma);
+                break ;
+            }
+          
+        }
+        
+    }
+
+}
