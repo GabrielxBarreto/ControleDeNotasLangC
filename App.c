@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <locale.h>
 #include <string.h>
-#include "aluno.h"
-#include "professor.h"
 #include "turma.h"
 //finalização impar - Humanas
 //finalização par - Exatas
@@ -91,9 +89,7 @@ scanf("%d",&op);
 switch (op)
 {
 case 1:
-    
-    criarTurma(p);
-    abrirTurma(p.id);
+    abrirTurma(criarTurma(p));
     break;
 case 2:
      listarAlunos();
@@ -110,6 +106,8 @@ default:
     return 0;
 }
 int menu(){
+
+
     int op = 0;
     char nome[20],senha[20];
   do{
@@ -143,6 +141,9 @@ int menu(){
 }
 
 int main(){
+    for(int i = 0; i <capacidadeDeTurmas; i++){
+    Repository_BD_Turma[i].codigoDaTurma = 0;
+}
     menu();
     return 0;
 }

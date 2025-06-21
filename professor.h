@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #define  capacidadeProfBD 20
-#define  quantMaterias 5
 #define  capacidadeAlunoBD 20
 typedef struct {
     int id; 

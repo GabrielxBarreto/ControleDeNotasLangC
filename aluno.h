@@ -10,7 +10,8 @@ typedef struct{
     char nome[50];
     int materias[quantMaterias];
     int turmasInscritos[30];
-    int notas;
+    float notas[10];
+    float mediaFinal;
 
 } Aluno;
 

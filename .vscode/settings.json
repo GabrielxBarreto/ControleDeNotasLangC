@@ -58,6 +58,7 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
     "aluno.h": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "professor.h": "c"
   }
 }
