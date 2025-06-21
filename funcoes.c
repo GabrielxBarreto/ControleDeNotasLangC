@@ -74,3 +74,27 @@ void somaNotasPorAvaliacao(Turma *turma, Aluno alunos[], int totalAlunos){
         printf("Avaliação %d - Soma das notas : %.2f \n", a+1, soma);
     }
 }
+
+//Função que gera um relatório geral do aluno
+//Requisito funcional 4 : Gerar um relatório geral de cada aluno
+void gerarRelatorioGeralDoAluno(Aluno aluno){
+    printf("Relatório do aluno : %s (Matricula : %d)\n", aluno.nome , aluno.matricula);
+    printf("Notas : ");
+    for(int i=0; i<10; i++){
+        if(aluno.notas[i] == 0.0)break ;
+        printf("%2.f", aluno.notas[i]);
+
+    }
+    printf("Média Final : %2.f \n", aluno.mediaFinal);
+}
+//Função que exibe o boletim individual do aluno 
+//Requisito funcional 4 : Exibir o boletim invidualmente do aluno
+void mostrarBoletimIndividual(Aluno aluno, int nAvaliacoes){
+    printf("Boletim do aluno : %s (Matricula %d)\n", aluno.nome, aluno.matricula);
+    for(int i = 0 ; i< nAvaliacoes ; i++){
+        printf("Avaliação %d : %2.f \n", i+1 , aluno.notas[i];)
+    }
+    printf("Média Final : %2.f \n", aluno.mediaFinal);
+}
+
+#endif
