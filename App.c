@@ -145,7 +145,11 @@ int main(){
     setlocale(LC_ALL,"");
     for(int i = 0; i <capacidadeDeTurmas; i++){
     Repository_BD_Turma[i].codigoDaTurma = 0;
-}
+        for(int j = 0; j < capacidadeProfBD;j++ ){
+            Repository_BD_Professor[i].codTurmas[j] = 0;
+        }
+        
+    }
     menu();
     return 0;
 }

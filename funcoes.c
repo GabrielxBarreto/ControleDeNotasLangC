@@ -92,7 +92,7 @@ void gerarRelatorioGeralDoAluno(Aluno aluno){
 void mostrarBoletimIndividual(Aluno aluno, int nAvaliacoes){
     printf("Boletim do aluno : %s (Matricula %d)\n", aluno.nome, aluno.matricula);
     for(int i = 0 ; i< nAvaliacoes ; i++){
-        printf("Avaliação %d : %2.f \n", i+1 , aluno.notas[i];)
+        printf("Avaliação %d : %2.f \n", i+1 , aluno.notas[i]);
     }
     printf("Média Final : %2.f \n", aluno.mediaFinal);
 }

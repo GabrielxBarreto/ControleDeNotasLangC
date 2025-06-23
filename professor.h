@@ -9,6 +9,7 @@ typedef struct {
     char cpf[20];
     char senha[20];
     int materias[quantMaterias];
+    int codTurmas[capacidadeDeTurmas];
 
 }Professor;
 

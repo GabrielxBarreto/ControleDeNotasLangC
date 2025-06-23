@@ -9,8 +9,8 @@ typedef struct{
     int matricula;
     char nome[50];
     int materias[quantMaterias];
-    int turmasInscritos[30];
-    float notas[10];
+    int turmasInscritos[capacidadeDeTurmas];
+    float notas[10][10];
     float mediaFinal;
 
 } Aluno;
