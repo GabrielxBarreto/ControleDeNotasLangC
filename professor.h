@@ -16,7 +16,7 @@ Professor Repository_BD_Professor[capacidadeProfBD];
 
 int cadastroDeProfessor(){
     Professor professor;
-    int n = 0;
+    //int n = 0;
     static int idRef = 100; 
     
     printf("Digite o nome do professor que Deseja cadastrar:\n");
@@ -27,13 +27,13 @@ int cadastroDeProfessor(){
     scanf(" %[^\n]", professor.usuario);
      printf("Digite sua senha:\n");
     scanf(" %[^\n]", professor.senha);
-    printf("\nDigite o número de trumas que o professor %s deve assumir inicialmente:\n",professor.nome);
+    /*printf("\nDigite o número de trumas que o professor %s deve assumir inicialmente:\n",professor.nome);
     scanf("%d",&n);
     for (int i = 0; i < n; i++)
     {
         printf("Digite o cóigo da turma:\n");
         scanf("%d",&professor.materias[i]);
-    }
+    }*/
 
     for (int i = 0; i < capacidadeProfBD; i++){
 
@@ -45,9 +45,9 @@ int cadastroDeProfessor(){
             strcpy(Repository_BD_Professor[i].senha,professor.senha);
             strcpy(Repository_BD_Professor[i].usuario,professor.usuario);
 
-            for (int j = 0; j < n; j++){
+            /*for (int j = 0; j < n; j++){
                 Repository_BD_Professor[i].materias[j] = professor.materias[j];
-            }
+            }*/
             idRef++;
             break;
         }

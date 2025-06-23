@@ -19,12 +19,12 @@ Aluno Repository_BD_Aluno[capacidadeAlunoBD];
 
 int cadastrarAluno(){
     Aluno aluno;
-    int n;
+    //int n;
     static int  matriculaRef = 1000 ;
 
     printf("Digite o nome do aluno : \n");
     scanf(" %[^\n]", aluno.nome);
-    printf("Digite o número de matérias que o aluno cursa : \n");
+    /*printf("Digite o número de matérias que o aluno cursa : \n");
     scanf("%d", &n);
 
     for(int i=0;i<n;i++){
@@ -33,7 +33,7 @@ int cadastrarAluno(){
 
 
 
-    }
+    }*/
     for(int i=0;i<capacidadeAlunoBD;i++){
         if(Repository_BD_Aluno[i].matricula == 0){
             aluno.matricula = matriculaRef;

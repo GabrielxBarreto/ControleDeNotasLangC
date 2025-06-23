@@ -1,11 +1,11 @@
 
-#define capacidadeDeTurmas 2
+#define capacidadeDeTurmas 10
 #include "aluno.h"
 #include "professor.h"
 typedef struct 
 {
     int codigoDaTurma;
-    int  Idprof;
+    int idprof;
     int listaDeAlunosInscritos[40];
     int codigoMateria;
     int cargaHoraria;
@@ -26,7 +26,7 @@ void abrirTurma(int codTurma){
 char nomeTurma[50];
 //trcpy(nomeTurma,conversorDeMaterias(codTurma));
 printf("|\t\tTURMA:\t%s\tCODIGO DA TURMA:\t%d\tCARGA HORÁRIA:\t%d\t\t|\n",nomeTurma,codTurma,80);
-printf("|\t\tPROFESSOR:\t%s\tCODIGO DA MATÉRIA:\t%d\t\t|\n",Repository_BD_Professor[Repository_BD_Turma[codTurma].Idprof].nome,Repository_BD_Turma[codTurma].codigoMateria);
+printf("|\t\tPROFESSOR:\t%s\tCODIGO DA MATÉRIA:\t%d\t\t|\n",Repository_BD_Professor[Repository_BD_Turma[codTurma].idprof].nome,Repository_BD_Turma[codTurma].codigoMateria);
 printf("|\t\t                                                   \t\t|\n");
 printf("|\t\t                                                   \t\t|\n");
 printf("|\t\t                                                   \t\t|\n");
@@ -103,18 +103,26 @@ do{
 int criarTurma(Professor p){
     int i;
     for(i = 0; i < capacidadeDeTurmas; i++){
+        int codAluno;
+        printf("O código na lista é: %d",Repository_BD_Turma[i].codigoDaTurma);
         if(Repository_BD_Turma[i].codigoDaTurma == 0){
-              printf("Digite o numero de matricula de cada aluno:\n");
-            scanf("%d",&Repository_BD_Turma[i].listaDeAlunosInscritos[i]);
-        Repository_BD_Turma[i].codigoDaTurma = codrefT;
-        Repository_BD_Turma[i].Idprof = p.id;
+            for(int j = 0; j < capacidadeAlunoBD; j++){
+                printf("Digite o numero de matricula de cada aluno:\n");
+                scanf("%d",&codAluno);
+                Repository_BD_Turma[i].listaDeAlunosInscritos[j] = codAluno;
+            }
+            
+            Repository_BD_Turma[i].codigoDaTurma = codrefT;
+            Repository_BD_Turma[i].idprof = p.id;
+            codrefT++;
+            break;
         }else{
             printf("A posição %d a lista de turmas esta ocupada", i);
         }
       
 
     }
-    codrefT++;
-    //passa a chave da turma
-    return Repository_BD_Turma[i].codigoDaTurma;
+    
+    printf("Turma com o cod: %d foi criada",Repository_BD_Turma[i].codigoDaTurma);
+    return i;
 }

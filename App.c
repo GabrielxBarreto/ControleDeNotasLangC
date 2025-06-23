@@ -71,6 +71,7 @@ for(int i = 0; i < capacidadeProfBD;i++){
         printf("%d", p.materias[i]);
     } 
 }
+
 //arte para os profs
 int op = 0;    
 do{
@@ -141,6 +142,7 @@ int menu(){
 }
 
 int main(){
+    setlocale(LC_ALL,"");
     for(int i = 0; i <capacidadeDeTurmas; i++){
     Repository_BD_Turma[i].codigoDaTurma = 0;
 }
