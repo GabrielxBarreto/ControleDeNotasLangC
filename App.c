@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <locale.h>
 #include <string.h>
+#include <stdlib.h>
 #include "turma.h"
 //finalização impar - Humanas
 //finalização par - Exatas
@@ -147,6 +148,7 @@ int main(){
     Repository_BD_Turma[i].codigoDaTurma = 0;
         for(int j = 0; j < capacidadeProfBD;j++ ){
             Repository_BD_Professor[i].codTurmas[j] = 0;
+             Repository_BD_Aluno[i].turmasInscritos[j] =  0;
         }
         
     }

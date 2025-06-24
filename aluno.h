@@ -9,9 +9,11 @@ typedef struct{
     int matricula;
     char nome[50];
     int materias[quantMaterias];
-    int turmasInscritos[capacidadeDeTurmas];
+    //a primeira coluna guarda o valor do código da turma e o resto guarda o seu conteudo de notas
     float notas[10][10];
     float mediaFinal;
+    //Relacionamento com o BD
+    int turmasInscritos[capacidadeDeTurmas];
 
 } Aluno;
 
