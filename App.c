@@ -44,7 +44,7 @@ int areaDeTrabalhoProfessor(int id){
                                              
                                              
 /*arte para os adms                                             
-printf("\n   :#############:   \n");            
+printf("\n :#############:   \n");            
 printf("  =###############=  \n");            
 printf("  *##=::.*#*.::=##*  \n");            
 printf("  *##.  =###=  :##*  \n");            
@@ -132,7 +132,37 @@ int menu(){
 
         break;
         case 2:
-            cadastroDeProfessor();
+            cadastroDeProfessor(); //Chamada a função
+             int idNovoProf = -1;
+            //Vai recuperar o ID recem atribuido ao professor cadastrado
+            for(int i = 0;i < capacidadeProfBD; i++){
+                if(Repository_BD_Professor[i].id != 0){
+                    idNovoProf = Repository_BD_Professor[i].id ;
+                }
+            }
+            if (idNovoProf != -1){
+                int qtdMaterias;
+                printf("Quantas matérias esse professor irá ministrar ? (máx %d)\n", quantMaterias );
+                scanf("%d", &qtdMaterias);
+                if (qtdMaterias>quantMaterias) qtdMaterias = quantMaterias;
+
+                for (int j = 0; j < qtdMaterias ; j++){
+                    int codMateria;
+                    printf("Digite o código da matéria %d", j +1);
+                    scanf("%d", &codMateria);
+
+                    for (int i = 0 ; i < capacidadeProfBD ; i++){
+                        if (Repository_BD_Professor[i].id == idNovoProf){
+                            Repository_BD_Professor[i].materias[j] = codMateria;
+                        }
+                    }
+                }
+                
+                printf("Professor cadastrado com sucesso e máterias atribuidas ! \n");
+                  }else {
+                    printf("Erro ao localizar o professor cadastrado.\n");
+                
+            }
         break;
    
     default:

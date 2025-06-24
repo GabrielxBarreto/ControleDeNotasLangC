@@ -110,8 +110,12 @@ do{
           
             break;
         case 2:
+            definirMetodoDeAvaliacao(posTabela);
             break;
         case 3:
+            int matricula;
+            printf("Digite a matricula do aluno ");
+            scanf("%d", )  
             break;
         case 4:
             break;
