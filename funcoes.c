@@ -81,8 +81,9 @@ void gerarRelatorioGeralDoAluno(Aluno aluno){
     printf("Relatório do aluno : %s (Matricula : %d)\n", aluno.nome , aluno.matricula);
     printf("Notas : ");
     for(int i=0; i<10; i++){
-        if(aluno.notas[i] == 0.0)break ;
-        printf("%2.f", aluno.notas[i]);
+        for(int j=0; j<10; j++){
+            if(aluno.notas[i][j] == 0.0)break ;
+            printf("%2.f", aluno.notas[i][j]);
 
     }
     printf("Média Final : %2.f \n", aluno.mediaFinal);
