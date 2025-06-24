@@ -83,7 +83,7 @@ void gerarRelatorioGeralDoAluno(Aluno aluno){
     for(int i=0; i<10; i++){
         for(int j=0; j<10; j++){
             if(aluno.notas[i][j] == 0.0)break ;
-            printf("%2.f", aluno.notas[i][j]);
+            printf("%2.f ", aluno.notas[i][j]);
 
     }
     printf("Média Final : %2.f \n", aluno.mediaFinal);

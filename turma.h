@@ -52,18 +52,7 @@ void definirMetodoDeAvaliacao(int posTabela){
                     }
                 }
                 
-                for (int i = 0; i < Repository_BD_Turma[posTabela].nA+1; i++)
-                {
-                    for (int j = 0; j < Repository_BD_Turma[posTabela].nA+1; j++)
-                    {
-                        if(j > 0){
-                            Repository_BD_Aluno[i].notas[i][j] = Repository_BD_Aluno[i].notas[i][j]; 
-                        }
-                        printf("Nota referente ao %d  %.2f   ",Repository_BD_Aluno[i].matricula, Repository_BD_Aluno[i].notas[i][j]);
-                        
-                    }
-                    printf("\n");
-                }
+                
                 
                 
             }else if(Repository_BD_Turma[posTabela].nP == 1){
