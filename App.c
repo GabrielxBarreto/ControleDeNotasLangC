@@ -2,7 +2,9 @@
 #include <locale.h>
 #include <string.h>
 #include <stdlib.h>
+#include "funcoes.h"
 #include "turma.h"
+
 //finalização impar - Humanas
 //finalização par - Exatas
 char  *conversorDeMaterias(int code){
@@ -86,7 +88,7 @@ printf(" axxxxxxuhqhunnnnuua           +----------------------------------------
 printf("  xxxxa       annuu            Matérias:\n");
 printf("   zx{         {nY             ");for(int i = 0; i < 3; i++){printf("%s ",conversorDeMaterias(p.materias[i]));};printf("\n");
 printf("     b         k               \n");for(int i=3 ; i < 5; i++){printf("%s ",conversorDeMaterias(p.materias[i]));};
-printf("\n1-Criar uma nova turma\n2-Listar Alunos\n3-Cadastrar Alunos\n4-sair");
+printf("\n1-Criar uma nova turma\n2-Listar Alunos\n3-Cadastrar Alunos\n4-Acessar turma\n 5-sair ");
 scanf("%d",&op);  
 switch (op)
 {
@@ -99,6 +101,27 @@ case 2:
 case 3:
      cadastrarAluno();
     break;
+case 4:{
+        int codigo;
+        printf("Digite o código da turma: ");
+        scanf("%d", &codigo);
+
+        int pos = -1;
+        for (int i = 0; i < capacidadeDeTurmas; i++) {
+            if (Repository_BD_Turma[i].codigoDaTurma == codigo) {
+                pos = i;
+                break;
+            }
+        }
+
+        if (pos != -1) {
+            abrirTurma(pos);
+        } else {
+            printf("Turma com código %d não encontrada.\n", codigo);
+        }
+        break;
+    }
+
 default:
     break;
 }

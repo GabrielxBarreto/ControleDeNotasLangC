@@ -1,3 +1,5 @@
+#ifndef PROFESSOR_H
+#define PROFESSOR_H
 #include <stdio.h>
 #include <string.h>
 #define  capacidadeProfBD 20
@@ -108,3 +110,4 @@ int logar(char usuario[], char senha[]){
     }
    return codeVerify;
 }
+#endif

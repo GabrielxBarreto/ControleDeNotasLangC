@@ -1,3 +1,8 @@
+#ifndef ALUNO_H
+#define ALUNO_H
+
+#define capacidadeDeTurmas 10
+
 #include <stdio.h>
 #include <string.h>
 #define  capacidadeProfBD 20
@@ -91,4 +96,4 @@ int cadastrarAluno(){
                }  
                return 0;
             }
-        
+        #endif
