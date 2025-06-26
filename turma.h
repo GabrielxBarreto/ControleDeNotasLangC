@@ -24,7 +24,7 @@ Turma Repository_BD_Turma[capacidadeDeTurmas];
 
 
 static int codrefT = 369;
-void definirMetodoDeAvaliacao(int posTabela){
+void cadastroDeNotas(int posTabela){
     int somaDosPesos = 0; 
       if(Repository_BD_Turma[posTabela].nP == 0){
                 int matriculaA = 0;
@@ -199,6 +199,40 @@ void abrirTurma(int posTabela) {
             default:
                 printf("Opção inválida!\n");
         }
+<<<<<<< Updated upstream
+=======
+    }
+}
+printf("|\t\t                                                   \t\t|\n");*/
+int op;
+do{
+    printf("1 - Definir Avaliações\n2- Lançar as Notas\n3 - Mostrar Boletim Inividual\n4 - Mostrar Boletim Geral\n5- Relatório Geral do Aluno\n6 - Voltar");
+    scanf("%d",&op);
+    
+    switch(op){
+        case 1:
+            printf("Quantas avaliações compõem o semestre:");
+            scanf("%d",&Repository_BD_Turma[posTabela].nA);
+            printf("possui peso?\n(0 - sim 1 - Não)");
+            scanf("%d",&Repository_BD_Turma[posTabela].nP);
+            
+          
+            break;
+        case 2:
+            cadastroDeNotas(posTabela);
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        default:
+            printf("ERRO DE LEITURA");
+            break;
+    }   
+}while(op != 6);
+>>>>>>> Stashed changes
 
     } while (op != 8);
 }

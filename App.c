@@ -80,10 +80,10 @@ int op = 0;
 do{
 printf("\n");
 printf("      adxnxnnda                +-------------------------------------------------------------+\n");
-printf("    xxxxxnxnnnnnn              | ID: %d                                                      |\n",id);
-printf("  axxxxu     unnnua            | NOME: %s                                                    |\n",p.nome);
-printf(" axxxxx       nnnuua           | USUÁRIO: %s                                                 |\n",p.usuario);
-printf(" hxxxxx.     .nnnuuh           | CPF: %s                                                     |\n",p.cpf);
+printf("    xxxxxnxnnnnnn              | ID:\t\t%d                                           |\n",id);
+printf("  axxxxu     unnnua            | NOME:\t\t%s                                         |\n",p.nome);
+printf(" axxxxx       nnnuua           | USUÁRIO:\t%s                                      |\n",p.usuario);
+printf(" hxxxxx.     .nnnuuh           | CPF:\t\t%s                                          |\n",p.cpf);
 printf(" axxxxxxuhqhunnnnuua           +-------------------------------------------------------------+\n");
 printf("  xxxxa       annuu            Matérias:\n");
 printf("   zx{         {nY             ");for(int i = 0; i < 3; i++){printf("%s ",conversorDeMaterias(p.materias[i]));};printf("\n");
