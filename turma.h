@@ -80,11 +80,32 @@ void cadastroDeNotas(int posTabela){
                 
             }
 }
+int listarAlunosDaTurma(int posTabela){
+    printf("\n---------LISTA DE ALUNOS----------\n");
+    for(int i = 0;i < capacidadeAlunoBD;i++){
+        
+        if(Repository_BD_Turma[posTabela].listaDeAlunosInscritos[i] != 0){
+            if(Repository_BD_Aluno[i].matricula == Repository_BD_Turma[posTabela].listaDeAlunosInscritos[i] ){
+                  printf("Matrícula %d | Nome : %s |", Repository_BD_Turma[posTabela].listaDeAlunosInscritos[i] , Repository_BD_Aluno[i].nome);
+            }
+          
+       
+                /*for(int j=0;j < quantMaterias; j++){
+                    if (Repository_BD_Aluno[i].materias[j] != 0){
+                        printf("%d|", Repository_BD_Aluno[i].materias[j]);
+                    }
+                }*/
+                printf("\n");
+        }
+    }
+    return 0;
+ }
 void abrirTurma(int posTabela) {
     int op;
 
     do {
         printf("\n------ Menu da Turma [%d] ------\n", Repository_BD_Turma[posTabela].codigoDaTurma);
+        //listarAlunosDaTurma(posTabela);
         printf("1 - Visualizar Soma Total das Notas da Turma\n");
         printf("2 - Visualizar Soma das Notas por Aluno\n");
         printf("3 - Mostrar Boletim Individual\n");
@@ -199,40 +220,6 @@ void abrirTurma(int posTabela) {
             default:
                 printf("Opção inválida!\n");
         }
-<<<<<<< Updated upstream
-=======
-    }
-}
-printf("|\t\t                                                   \t\t|\n");*/
-int op;
-do{
-    printf("1 - Definir Avaliações\n2- Lançar as Notas\n3 - Mostrar Boletim Inividual\n4 - Mostrar Boletim Geral\n5- Relatório Geral do Aluno\n6 - Voltar");
-    scanf("%d",&op);
-    
-    switch(op){
-        case 1:
-            printf("Quantas avaliações compõem o semestre:");
-            scanf("%d",&Repository_BD_Turma[posTabela].nA);
-            printf("possui peso?\n(0 - sim 1 - Não)");
-            scanf("%d",&Repository_BD_Turma[posTabela].nP);
-            
-          
-            break;
-        case 2:
-            cadastroDeNotas(posTabela);
-            break;
-        case 3:
-            break;
-        case 4:
-            break;
-        case 5:
-            break;
-        default:
-            printf("ERRO DE LEITURA");
-            break;
-    }   
-}while(op != 6);
->>>>>>> Stashed changes
 
     } while (op != 8);
 }

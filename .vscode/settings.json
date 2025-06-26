@@ -59,6 +59,7 @@
   "files.associations": {
     "aluno.h": "c",
     "stdio.h": "c",
-    "professor.h": "c"
+    "professor.h": "c",
+    "funcoes.h": "c"
   }
 }

@@ -2,6 +2,7 @@
 #include <locale.h>
 #include <string.h>
 #include <stdlib.h>
+#include <conio.h>
 #include "funcoes.h"
 #include "turma.h"
 
@@ -68,7 +69,7 @@ for(int i = 0; i < capacidadeProfBD;i++){
         strcpy(p.cpf,Repository_BD_Professor[i].cpf);
         strcpy(p.usuario,Repository_BD_Professor[i].usuario);
          for (int j = 0; j < quantMaterias; j++){
-                 p.materias[i] = Repository_BD_Professor[i].materias[j];
+                 p.materias[j] = Repository_BD_Professor[i].materias[j];
             }
        
         printf("%d", p.materias[i]);
@@ -79,16 +80,16 @@ for(int i = 0; i < capacidadeProfBD;i++){
 int op = 0;    
 do{
 printf("\n");
-printf("      adxnxnnda                +-------------------------------------------------------------+\n");
-printf("    xxxxxnxnnnnnn              | ID:\t\t%d                                           |\n",id);
-printf("  axxxxu     unnnua            | NOME:\t\t%s                                         |\n",p.nome);
-printf(" axxxxx       nnnuua           | USUÁRIO:\t%s                                      |\n",p.usuario);
-printf(" hxxxxx.     .nnnuuh           | CPF:\t\t%s                                          |\n",p.cpf);
-printf(" axxxxxxuhqhunnnnuua           +-------------------------------------------------------------+\n");
-printf("  xxxxa       annuu            Matérias:\n");
-printf("   zx{         {nY             ");for(int i = 0; i < 3; i++){printf("%s ",conversorDeMaterias(p.materias[i]));};printf("\n");
-printf("     b         k               \n");for(int i=3 ; i < 5; i++){printf("%s ",conversorDeMaterias(p.materias[i]));};
-printf("\n1-Criar uma nova turma\n2-Listar Alunos\n3-Cadastrar Alunos\n4-Acessar turma\n 5-sair ");
+printf("\033[0;34m      adxnxnnda                \033[0m+-------------------------------------------------------------+\n");
+printf("\033[0;34m    xxxxxnxnnnnnn              \033[0m| ID:\t\t%d                                           \n",id);
+printf("\033[0;34m  axxxxu     unnnua            \033[0m| NOME:\t\t%s                                         \n",p.nome);
+printf("\033[0;34m axxxxx       nnnuua           \033[0m| USUÁRIO:\t%s                                      \n",p.usuario);
+printf("\033[0;34m hxxxxx.     .nnnuuh           \033[0m| CPF:\t\t%s                                          \n",p.cpf);
+printf("\033[0;34m axxxxxxuhqhunnnnuua           \033[0m+-------------------------------------------------------------+\n");
+printf("\033[0;34m  xxxxa       annuu            \033[0mMatérias:\n");
+printf("\033[0;34m   zx{         {nY             \033[0m");for(int i = 0; i < 3; i++){printf("%s ",conversorDeMaterias(p.materias[i]));};printf("\n");
+printf("\033[0;34m     b         k               \033[0m");for(int i=3 ; i < 5; i++){printf("%s ",conversorDeMaterias(p.materias[i]));};
+printf("\n\n1-Criar uma nova turma\n2-Listar Alunos\n3-Cadastrar Alunos\n4-Acessar turma\n 5-sair ");
 scanf("%d",&op);  
 switch (op)
 {
@@ -108,7 +109,7 @@ case 4:{
 
         int pos = -1;
         for (int i = 0; i < capacidadeDeTurmas; i++) {
-            if (Repository_BD_Turma[i].codigoDaTurma == codigo) {
+            if (Repository_BD_Turma[i].codigoDaTurma!= 0 && Repository_BD_Turma[i].codigoDaTurma == codigo) {
                 pos = i;
                 break;
             }
@@ -123,6 +124,7 @@ case 4:{
     }
 
 default:
+    printf("Digite uma Alternativa válida");
     break;
 }
 }while(op != 4);      
@@ -135,8 +137,27 @@ int menu(){
 
     int op = 0;
     char nome[20],senha[20];
+    
   do{
-    printf("BEM VINDO PROFESSOR!:\n\n1-Logar\n2-Criar Conta\n3-sair\n");
+     printf("\033[0;31mTexto em vermelho\033[0m\n"); // Vermelho
+    printf("\033[0;32mTexto em verde\033[0m\n");   // Verde
+    printf("\033[0;33mTexto em amarelo\033[0m\n"); // Amarelo
+    printf("\033[0;34mTexto em azul\033[0m\n");    // Azul
+    printf("\033[0;35mTexto em magenta\033[0m\n"); // Magenta
+    printf("\033[0;36mTexto em ciano\033[0m\n");   // Ciano
+
+    // Fundo colorido
+    printf("\033[41mFundo vermelho\033[0m\n");     // Fundo vermelho
+    printf("\033[42mFundo verde\033[0m\n");        // Fundo verde
+    printf("\033[43mFundo amarelo\033[0m\n");      // Fundo amarelo
+    printf("\033[44mFundo azul\033[0m\n");         // Fundo azul
+
+    // Texto em negrito
+    printf("\033[1;31mTexto vermelho em negrito\033[0m\n");
+    printf("=====================\n");
+    printf("BEM VINDO!:\n\n1\t-\tLogar\n2\t-\tCriar Conta\n3\t-\tsair\n");
+    printf("=====================\n");
+
     scanf("%d",&op);
    switch (op){
         case 1:
@@ -163,6 +184,7 @@ int menu(){
                     idNovoProf = Repository_BD_Professor[i].id ;
                 }
             }
+            printf("\033[0;31mTexto em vermelho\033[0m\n");
             if (idNovoProf != -1){
                 int qtdMaterias;
                 printf("Quantas matérias esse professor irá ministrar ? (máx %d)\n", quantMaterias );
@@ -197,6 +219,7 @@ int menu(){
 
 int main(){
     setlocale(LC_ALL,"");
+
     for(int i = 0; i <capacidadeDeTurmas; i++){
     Repository_BD_Turma[i].codigoDaTurma = 0;
         for(int j = 0; j < capacidadeProfBD;j++ ){
