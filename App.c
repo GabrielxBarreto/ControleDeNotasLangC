@@ -39,106 +39,89 @@ char  *conversorDeMaterias(int code){
     
 }
 int areaDeTrabalhoProfessor(int id){
+                                            
+    Professor p;                                
 
-                                             
-                                             
-                                             
-                                             
-                                             
-                                             
-/*arte para os adms                                             
-printf("\n :#############:   \n");            
-printf("  =###############=  \n");            
-printf("  *##=::.*#*.::=##*  \n");            
-printf("  *##.  =###=  :##*  \n");            
-printf("  =###############=  \n");            
-printf("   #######*######*   \n");            
-printf("   .+##*******##+.   \n");            
-printf("     -###* *###-     \n");            
-printf("       -**:**-       \n"); */           
-                                         
-                                             
-                                             
-                                             
-                                             
-Professor p;                                
-
-for(int i = 0; i < capacidadeProfBD;i++){
-    if(Repository_BD_Professor[i].id == id){
-        strcpy(p.nome,Repository_BD_Professor[i].nome);
-        strcpy(p.cpf,Repository_BD_Professor[i].cpf);
-        strcpy(p.usuario,Repository_BD_Professor[i].usuario);
-         for (int j = 0; j < quantMaterias; j++){
+    for(int i = 0; i < capacidadeProfBD;i++){
+        if(Repository_BD_Professor[i].id == id){
+            strcpy(p.nome,Repository_BD_Professor[i].nome);
+            strcpy(p.cpf,Repository_BD_Professor[i].cpf);
+            strcpy(p.usuario,Repository_BD_Professor[i].usuario);
+            for (int j = 0; j < quantMaterias; j++){
                  p.materias[j] = Repository_BD_Professor[i].materias[j];
             }
        
-        printf("%d", p.materias[i]);
-    } 
-}
+            printf("%d", p.materias[i]);
+        } 
+    }
 
 //arte para os profs
 int op = 0;    
 do{
-printf("\n");
-printf("\033[0;34m      adxnxnnda                \033[0m+-------------------------------------------------------------+\n");
-printf("\033[0;34m    xxxxxnxnnnnnn              \033[0m| ID:\t\t%d                                           \n",id);
-printf("\033[0;34m  axxxxu     unnnua            \033[0m| NOME:\t\t%s                                         \n",p.nome);
-printf("\033[0;34m axxxxx       nnnuua           \033[0m| USUÁRIO:\t%s                                      \n",p.usuario);
-printf("\033[0;34m hxxxxx.     .nnnuuh           \033[0m| CPF:\t\t%s                                          \n",p.cpf);
-printf("\033[0;34m axxxxxxuhqhunnnnuua           \033[0m+-------------------------------------------------------------+\n");
-printf("\033[0;34m  xxxxa       annuu            \033[0mMatérias:\n");
-printf("\033[0;34m   zx{         {nY             \033[0m");for(int i = 0; i < 3; i++){printf("%s ",conversorDeMaterias(p.materias[i]));};printf("\n");
-printf("\033[0;34m     b         k               \033[0m");for(int i=3 ; i < 5; i++){printf("%s ",conversorDeMaterias(p.materias[i]));};
-printf("\n\n1-Criar uma nova turma\n2-Listar Alunos\n3-Cadastrar Alunos\n4-Acessar turma\n 5-sair ");
-scanf("%d",&op);  
-switch (op)
-{
-case 1:
-    abrirTurma(criarTurma(p));
-    break;
-case 2:
-     listarAlunos();
-    break;
-case 3:
-     cadastrarAluno();
-    break;
-case 4:{
-        int codigo;
-        printf("Digite o código da turma: ");
-        scanf("%d", &codigo);
+    printf("\n");
+    printf("\033[0;34m      adxnxnnda                \033[0m+-------------------------------------------------------------+\n");
+    printf("\033[0;34m    xxxxxnxnnnnnn              \033[0m| ID:\t\t%d                                           \n",id);
+    printf("\033[0;34m  axxxxu     unnnua            \033[0m| NOME:\t\t%s                                         \n",p.nome);
+    printf("\033[0;34m axxxxx       nnnuua           \033[0m| USUÁRIO:\t%s                                      \n",p.usuario);
+    printf("\033[0;34m hxxxxx.     .nnnuuh           \033[0m| CPF:\t\t%s                                          \n",p.cpf);
+    printf("\033[0;34m axxxxxxuhqhunnnnuua           \033[0m+-------------------------------------------------------------+\n");
+    printf("\033[0;34m  xxxxa       annuu            \033[0mMatérias:\n");
+    printf("\033[0;34m   zx{         {nY             \033[0m");for(int i = 0; i < 3; i++){printf("%s ",conversorDeMaterias(p.materias[i]));};printf("\n");
+    printf("\033[0;34m                               \033[0m");for(int i=3 ; i < 5; i++){printf("%s ",conversorDeMaterias(p.materias[i]));};
+    printf("\n\n1-Criar uma nova turma\n2-Listar Alunos\n3-Cadastrar Alunos\n4-Acessar turma\n5-sair ");
+    scanf("%d",&op);  
+    switch (op){
+        case 1:
+            abrirTurma(criarTurma(p));
+            system("cls");
+            break;
+        case 2:
+        system("cls");
+             listarAlunos();
+            break;
+        case 3:
+            system("cls");
+             cadastrarAluno();
+            break;
+        case 4:{
+            system("cls");
+            int codigo;
+            printf("Digite o código da turma: ");
+            scanf("%d", &codigo);
 
-        int pos = -1;
-        for (int i = 0; i < capacidadeDeTurmas; i++) {
-            if (Repository_BD_Turma[i].codigoDaTurma!= 0 && Repository_BD_Turma[i].codigoDaTurma == codigo) {
-                pos = i;
-                break;
+            int pos = -1;
+            for (int i = 0; i < capacidadeDeTurmas; i++){
+                if (Repository_BD_Turma[i].codigoDaTurma!= 0 && Repository_BD_Turma[i].codigoDaTurma == codigo){
+                    pos = i;
+                    break;
+                }
             }
+
+            if (pos != -1) {
+                abrirTurma(pos);
+            } else {
+                printf("Turma com código %d não encontrada.\n", codigo);
+            }
+            break;
         }
 
-        if (pos != -1) {
-            abrirTurma(pos);
-        } else {
-            printf("Turma com código %d não encontrada.\n", codigo);
-        }
-        break;
-    }
-
-default:
+        default:
     printf("Digite uma Alternativa válida");
     break;
 }
-}while(op != 4);      
+}while(op != 5);      
 
 
     return 0;
 }
 int menu(){
 
-
+system("cls");
     int op = 0;
     char nome[20],senha[20];
     
   do{
+    system("cls");
      printf("\033[0;31mTexto em vermelho\033[0m\n"); // Vermelho
     printf("\033[0;32mTexto em verde\033[0m\n");   // Verde
     printf("\033[0;33mTexto em amarelo\033[0m\n"); // Amarelo
@@ -155,12 +138,13 @@ int menu(){
     // Texto em negrito
     printf("\033[1;31mTexto vermelho em negrito\033[0m\n");
     printf("=====================\n");
-    printf("BEM VINDO!:\n\n1\t-\tLogar\n2\t-\tCriar Conta\n3\t-\tsair\n");
+    printf("\tBEM VINDO!:\n\n1\t-\tLogar\n2\t-\tCriar Conta\n3\t-\tsair\n");
     printf("=====================\n");
 
     scanf("%d",&op);
    switch (op){
         case 1:
+            system("cls");
             printf("Digite seu usuário:\n");
             scanf(" %[^\n]",nome);
             printf("Digite sua senha:\n");
@@ -168,14 +152,17 @@ int menu(){
 
             int verificacao = logar(nome, senha);
             if(verificacao > 0){
+                system("cls");
                 printf("Logado com sucesso!\n");
                 areaDeTrabalhoProfessor(verificacao);
             }else{
+                system("cls");
                 printf("Usuário não encontrado -ERRO 403-Procure a equipe técnica\n");
             }
 
         break;
         case 2:
+            system("cls");
             cadastroDeProfessor(); //Chamada a função
              int idNovoProf = -1;
             //Vai recuperar o ID recem atribuido ao professor cadastrado

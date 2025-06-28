@@ -57,6 +57,7 @@ void somaNotasPorAluno(Turma *turma, Aluno alunos[], int totalAlunos){
                         break;
                     }
                 }
+                
                 printf("Aluno: %s | Matrícula: %d | Soma das notas: %.2f\n", alunos[j].nome, alunos[j].matricula, soma);
                 break;
             }
@@ -83,11 +84,13 @@ void somaNotasPorAvaliacao(Turma *turma, Aluno alunos[], int totalAlunos){
                 }
             }
         }
+        
         printf("Avaliação %d - Soma das notas: %.2f\n", a+1, soma);
     }
 }
 
 void gerarRelatorioGeralDoAluno(Aluno aluno){
+   
     printf("Relatório do aluno: %s (Matrícula: %d)\n", aluno.nome, aluno.matricula);
     for(int i = 0; i < 10; i++){
         if (aluno.notas[i][0] == 0) continue;
@@ -103,6 +106,7 @@ void gerarRelatorioGeralDoAluno(Aluno aluno){
 }
 
 void mostrarBoletimIndividual(Aluno aluno, int codigoTurma, int nAvaliacoes){
+    
     int indiceNota = -1;
 
     for (int i = 0; i < 10; i++) {

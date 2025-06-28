@@ -104,29 +104,32 @@ void abrirTurma(int posTabela) {
     int op;
 
     do {
-        printf("\n------ Menu da Turma [%d] ------\n", Repository_BD_Turma[posTabela].codigoDaTurma);
+        
+        printf("\n---------------------------- Menu da Turma [%d] -----------------------------------\n", Repository_BD_Turma[posTabela].codigoDaTurma);
         //listarAlunosDaTurma(posTabela);
-        printf("1 - Visualizar Soma Total das Notas da Turma\n");
-        printf("2 - Visualizar Soma das Notas por Aluno\n");
-        printf("3 - Mostrar Boletim Individual\n");
-        printf("4 - Visualizar Soma das Notas por Avaliação\n");
-        printf("5 - Gerar Relatório Geral do Aluno\n");
-        printf("6 - Definir Número de Avaliações\n");
-        printf("7 - Lançar Notas\n");
-        printf("8 - Sair da Turma\n");
+        printf("1 - Visualizar Soma Total das Notas da Turma      5 - Gerar Relatório Geral do Aluno\n");
+        printf("2 - Visualizar Soma das Notas por Aluno           6 - Definir Número de Avaliações\n");
+        printf("3 - Mostrar Boletim Individual                    7 - Lançar Notas\n");
+        printf("4 - Visualizar Soma das Notas por Avaliação     8 - Sair da Turma\n");
+        
+        
+        
         printf("Escolha uma opção: ");
         scanf("%d", &op);
 
         switch (op) {
             case 1:
+                system("cls");
                 somaTotalNotas(&Repository_BD_Turma[posTabela], Repository_BD_Aluno, capacidadeAlunoBD);
                 break;
 
             case 2:
+                system("cls");
                 somaNotasPorAluno(&Repository_BD_Turma[posTabela], Repository_BD_Aluno, capacidadeAlunoBD);
                 break;
 
             case 3: {
+                system("cls");
                 int matricula, encontrado = 0;
                 printf("Digite a matrícula do aluno: ");
                 scanf("%d", &matricula);
@@ -145,10 +148,12 @@ void abrirTurma(int posTabela) {
             }
 
             case 4:
+            system("cls");
                 somaNotasPorAvaliacao(&Repository_BD_Turma[posTabela], Repository_BD_Aluno, capacidadeAlunoBD);
                 break;
 
             case 5: {
+                system("cls");
                 int matricula, encontrado = 0;
                 printf("Digite a matrícula do aluno: ");
                 scanf("%d", &matricula);
@@ -165,12 +170,14 @@ void abrirTurma(int posTabela) {
             }
 
             case 6:
+            system("cls");
                 printf("Digite a quantidade de avaliações da turma: ");
                 scanf("%d", &Repository_BD_Turma[posTabela].nA);
                 printf("Número de avaliações definido como %d\n", Repository_BD_Turma[posTabela].nA);
                 break;
 
             case 7: {
+                system("cls");
                 int nAvaliacoes = Repository_BD_Turma[posTabela].nA;
                 if (nAvaliacoes <= 0) {
                     printf("Defina o número de avaliações primeiro (opção 6).\n");
@@ -227,7 +234,6 @@ int criarTurma(Professor p){
     int i;
     for(i = 0; i < capacidadeDeTurmas; i++){
         
-        printf("O código na lista é: %d",Repository_BD_Turma[i].codigoDaTurma);
         if(Repository_BD_Turma[i].codigoDaTurma == 0){
             int val;
             printf("Digite o numero de alunos inicialmente:\n");

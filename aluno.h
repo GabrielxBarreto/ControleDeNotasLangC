@@ -60,18 +60,12 @@ int cadastrarAluno(){
 //Função para a listagem dos alunos
 
  int listarAlunos(){
-    printf("\n---------LISTA DE ALUNOS----------\n");
+    printf("\n---------LISTA DE ALUNOS CADASTRADOS NO SISTEMA----------\n");
     for(int i = 0;i < capacidadeAlunoBD;i++){
         
         if(Repository_BD_Aluno[i].matricula != 0){
-            printf("Matrícula %d | Nome : %s | Matérias: ", 
+            printf("Matrícula %d | Nome : %s", 
                 Repository_BD_Aluno[i].matricula, Repository_BD_Aluno[i].nome);
-       
-                for(int j=0;j < quantMaterias; j++){
-                    if (Repository_BD_Aluno[i].materias[j] != 0){
-                        printf("%d|", Repository_BD_Aluno[i].materias[j]);
-                    }
-                }
                 printf("\n");
         }
     }
