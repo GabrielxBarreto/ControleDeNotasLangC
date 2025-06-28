@@ -138,7 +138,7 @@ system("cls");
     // Texto em negrito
     printf("\033[1;31mTexto vermelho em negrito\033[0m\n");
     printf("=====================\n");
-    printf("\tBEM VINDO!:\n\n1\t-\tLogar\n2\t-\tCriar Conta\n3\t-\tsair\n");
+    printf("BEM VINDO!:\n\n1-Logar\n2-Criar Conta\n3-sair\n");
     printf("=====================\n");
 
     scanf("%d",&op);
