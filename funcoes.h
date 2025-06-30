@@ -20,6 +20,8 @@ void gerarRelatorioGeralDoAluno(Aluno aluno);
 
 void somaTotalNotas(Turma *turma, Aluno alunos[], int totalAlunos){
     float soma = 0;
+    int totalNotas = 0;
+    float media =0;
     for(int i = 0; i < 40; i++){
         int matricula = turma->listaDeAlunosInscritos[i];
         if(matricula == 0) continue;
@@ -30,6 +32,7 @@ void somaTotalNotas(Turma *turma, Aluno alunos[], int totalAlunos){
                     for (int l = 0; l < 10; l++) {
                         if ((int)alunos[j].notas[l][0] == turma->codigoDaTurma) {
                             soma += alunos[j].notas[l][k+1];
+                            totalNotas++;
                             break;
                         }
                     }
@@ -38,7 +41,20 @@ void somaTotalNotas(Turma *turma, Aluno alunos[], int totalAlunos){
             }
         }
     }
-    printf("Soma total dos alunos da turma: %.2f\n", soma);
+     if(totalNotas > 0){
+        media = soma / totalNotas;
+        printf("Soma total das notas da turma: %.2f\n", soma);
+        printf("A média total de todos os alunos da turma é: %.2f\n", media);
+        
+        if (media >= 6){
+            printf("A média da turma é de aprovados!\n");
+        }
+        else {
+            printf("A média da turma é de reprovados!\n");
+        }
+    } else {
+        printf("Nenhuma nota encontrada para calcular!!!!\n");
+    }
 }
 
 void somaNotasPorAluno(Turma *turma, Aluno alunos[], int totalAlunos){
@@ -57,8 +73,13 @@ void somaNotasPorAluno(Turma *turma, Aluno alunos[], int totalAlunos){
                         break;
                     }
                 }
-                
-                printf("Aluno: %s | Matrícula: %d | Soma das notas: %.2f\n", alunos[j].nome, alunos[j].matricula, soma);
+                float media = soma / turma->nA;
+                printf("Aluno: %s | Matrícula: %d | Soma das notas: %.2f |Média : %.2f | Situação %s: \n", 
+                    alunos[j].nome,
+                    alunos[j].matricula,
+                    soma,
+                    media,
+                (media>=6 ? "Aprovado" : "Reprovado"));
                 break;
             }
         }
