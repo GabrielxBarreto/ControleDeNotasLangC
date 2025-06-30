@@ -47,10 +47,10 @@ void somaTotalNotas(Turma *turma, Aluno alunos[], int totalAlunos){
         printf("A média total de todos os alunos da turma é: %.2f\n", media);
         
         if (media >= 6){
-            printf("A média da turma é de aprovados!\n");
+            printf("\033[0;32mA média da turma é de aprovados!\033[0m\n");
         }
         else {
-            printf("A média da turma é de reprovados!\n");
+            printf("\033[0;31mA média da turma é de reprovados!\033[0m\n");
         }
     } else {
         printf("Nenhuma nota encontrada para calcular!!!!\n");
@@ -79,7 +79,7 @@ void somaNotasPorAluno(Turma *turma, Aluno alunos[], int totalAlunos){
                     alunos[j].matricula,
                     soma,
                     media,
-                (media>=6 ? "Aprovado" : "Reprovado"));
+                (media>=6 ? "\033[0;32mAprovado\033[0m" : "\033[0;31mReprovado033\033[0m"));
                 break;
             }
         }
@@ -139,9 +139,9 @@ void somaNotasPorAvaliacao(Turma *turma, Aluno alunos[], int totalAlunos){
             }
             printf("Avaliação %d - Soma das notas: %.2f | Média: %.2f \n",a+1, soma, media ); 
         if(acimaOuIgual > abaixo)
-            printf("A maioria da turma está na média !\n\n");
+            printf("\033[0;32mA maioria da turma está na média !\033[0m\n");
             else if (abaixo>acimaOuIgual)
-            printf("A maioria da turma está abaixo da média.\n\n");
+            printf("\033[0;31mA maioria da turma está abaixo da média.\033[0m\n");
            
         }
         
