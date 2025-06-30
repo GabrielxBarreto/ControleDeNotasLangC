@@ -89,6 +89,8 @@ void somaNotasPorAluno(Turma *turma, Aluno alunos[], int totalAlunos){
 void somaNotasPorAvaliacao(Turma *turma, Aluno alunos[], int totalAlunos){
     for(int a = 0; a < turma->nA; a++){
         float soma = 0;
+        int totalNotas = 0;
+
         for(int i = 0; i < 40; i++){
             int matricula = turma->listaDeAlunosInscritos[i];
             if(matricula == 0) continue;
@@ -98,6 +100,7 @@ void somaNotasPorAvaliacao(Turma *turma, Aluno alunos[], int totalAlunos){
                     for(int l = 0; l < 10; l++) {
                         if ((int)alunos[j].notas[l][0] == turma->codigoDaTurma) {
                             soma += alunos[j].notas[l][a+1];
+                            totalNotas++;
                             break;
                         }
                     }
@@ -106,9 +109,45 @@ void somaNotasPorAvaliacao(Turma *turma, Aluno alunos[], int totalAlunos){
             }
         }
         
-        printf("Avaliação %d - Soma das notas: %.2f\n", a+1, soma);
+        if(totalNotas == 0){
+            printf("Avaliação %d - Nenhuma nota disponível.\n", a+1);
+            continue;
+        }
+
+        float media = soma / totalNotas;
+
+        int acimaOuIgual =0;
+        int abaixo = 0 ;
+        
+        for(int i =0;i<40; i++){
+            int matricula = turma->listaDeAlunosInscritos[i];
+            if( matricula == 0) continue;
+
+            for (int j = 0;j< totalAlunos;j++){
+                if(alunos[j].matricula == matricula){
+                    for(int l= 0;l<10;l++){
+                        if((int)alunos[j].notas[l][0]== turma->codigoDaTurma){
+                            float nota = alunos[j].notas[l][a+1];
+                            if(nota >= media) acimaOuIgual++;
+                            else abaixo++;
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+            }
+            printf("Avaliação %d - Soma das notas: %.2f | Média: %.2f \n",a+1, soma, media ); 
+        if(acimaOuIgual > abaixo)
+            printf("A maioria da turma está na média !\n\n");
+            else if (abaixo>acimaOuIgual)
+            printf("A maioria da turma está abaixo da média.\n\n");
+           
+        }
+        
+        
     }
-}
+
 
 void gerarRelatorioGeralDoAluno(Aluno aluno){
    
