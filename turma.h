@@ -10,9 +10,10 @@ typedef struct
     int codigoDaTurma;
     int codigoMateria;
     int cargaHoraria;
-    int nA;//numero de AvaliaÃ§Ãµes
+    int nA;//numero de Avaliações
     int nP;//possui peso?
     //Relacionamento do BD
+    char nomeDaTurma[50];
     int idprof;
     int listaDeAlunosInscritos[capacidadeAlunoBD];
     
@@ -46,11 +47,11 @@ void cadastroDeNotas(int posTabela){
                             Repository_BD_Aluno[i].notas[i][0] = Repository_BD_Turma[posTabela].codigoDaTurma;
                             Repository_BD_Aluno[i].notas[i][j+1] = (nota*escala)/peso;
                             Repository_BD_Aluno[i].mediaFinal +=  Repository_BD_Aluno[i].notas[i][j+1] /somaDosPesos;
-                             printf("AtÃ© aqui foi 2!!");
+                             printf("Até aqui foi 2!!");
                         }
                        
                     }else{
-                        printf("Matricula nÃ£o encontrada!");
+                        printf("Matricula não encontrada!");
                     }
                 }
                 
@@ -74,7 +75,7 @@ void cadastroDeNotas(int posTabela){
                             Repository_BD_Aluno[i].mediaFinal +=  Repository_BD_Aluno[i].notas[i][j+1] /Repository_BD_Turma[posTabela].nA;
                         }
                     }else{
-                        printf("Matricula nÃ£o encontrada!");
+                        printf("Matricula não encontrada!");
                     }
                 }
                 
@@ -86,7 +87,7 @@ int listarAlunosDaTurma(int posTabela){
         
         if(Repository_BD_Turma[posTabela].listaDeAlunosInscritos[i] != 0){
             if(Repository_BD_Aluno[i].matricula == Repository_BD_Turma[posTabela].listaDeAlunosInscritos[i] ){
-                  printf("MatrÃ­cula %d | Nome : %s |", Repository_BD_Turma[posTabela].listaDeAlunosInscritos[i] , Repository_BD_Aluno[i].nome);
+                  printf("Matrícula %d | Nome : %s |", Repository_BD_Turma[posTabela].listaDeAlunosInscritos[i] , Repository_BD_Aluno[i].nome);
             }
           
        
@@ -106,15 +107,16 @@ void abrirTurma(int posTabela) {
     do {
         
         printf("\n---------------------------- Menu da Turma [%d] -----------------------------------\n", Repository_BD_Turma[posTabela].codigoDaTurma);
+        printf("Nome:%s\t\tNúmero de Avaliações:%d\n",Repository_BD_Turma[posTabela].nomeDaTurma,Repository_BD_Turma[posTabela].nA);
         //listarAlunosDaTurma(posTabela);
-        printf("1 - Visualizar Soma Total das Notas da Turma      5 - Gerar RelatÃ³rio Geral do Aluno\n");
-        printf("2 - Visualizar Soma das Notas por Aluno           6 - Definir NÃºmero de AvaliaÃ§Ãµes\n");
-        printf("3 - Mostrar Boletim Individual                    7 - LanÃ§ar Notas\n");
-        printf("4 - Visualizar Soma das Notas por AvaliaÃ§Ã£o     8 - Sair da Turma\n");
+        printf("1 - Visualizar Soma Total das Notas da Turma      5 - Gerar Relatório Geral do Aluno\n");
+        printf("2 - Visualizar Soma das Notas por Aluno           6 - Definir Número de Avaliações\n");
+        printf("3 - Mostrar Boletim Individual                    7 - Lançar Notas\n");
+        printf("4 - Visualizar Soma das Notas por Avaliação     8 - Sair da Turma\n");
         
         
         
-        printf("Escolha uma opÃ§Ã£o: ");
+        printf("Escolha uma opção: ");
         scanf("%d", &op);
 
         switch (op) {
@@ -131,7 +133,7 @@ void abrirTurma(int posTabela) {
             case 3: {
                 system("cls");
                 int matricula, encontrado = 0;
-                printf("Digite a matrÃ­cula do aluno: ");
+                printf("Digite a matrícula do aluno: ");
                 scanf("%d", &matricula);
                 for (int i = 0; i < capacidadeAlunoBD; i++) {
                     if (Repository_BD_Aluno[i].matricula == matricula) {
@@ -143,7 +145,7 @@ void abrirTurma(int posTabela) {
                     }
                 }
                 if (!encontrado)
-                    printf("Aluno com matrÃ­cula %d nÃ£o encontrado!\n", matricula);
+                    printf("Aluno com matrícula %d não encontrado!\n", matricula);
                 break;
             }
 
@@ -155,7 +157,7 @@ void abrirTurma(int posTabela) {
             case 5: {
                 system("cls");
                 int matricula, encontrado = 0;
-                printf("Digite a matrÃ­cula do aluno: ");
+                printf("Digite a matrícula do aluno: ");
                 scanf("%d", &matricula);
                 for (int i = 0; i < capacidadeAlunoBD; i++) {
                     if (Repository_BD_Aluno[i].matricula == matricula) {
@@ -165,22 +167,22 @@ void abrirTurma(int posTabela) {
                     }
                 }
                 if (!encontrado)
-                    printf("Aluno com matrÃ­cula %d nÃ£o encontrado!\n", matricula);
+                    printf("Aluno com matrícula %d não encontrado!\n", matricula);
                 break;
             }
 
             case 6:
             system("cls");
-                printf("Digite a quantidade de avaliaÃ§Ãµes da turma: ");
+                printf("Digite a quantidade de avaliações da turma: ");
                 scanf("%d", &Repository_BD_Turma[posTabela].nA);
-                printf("NÃºmero de avaliaÃ§Ãµes definido como %d\n", Repository_BD_Turma[posTabela].nA);
+                printf("Número de avaliações definido como %d\n", Repository_BD_Turma[posTabela].nA);
                 break;
 
             case 7: {
                 system("cls");
                 int nAvaliacoes = Repository_BD_Turma[posTabela].nA;
                 if (nAvaliacoes <= 0) {
-                    printf("Defina o nÃºmero de avaliaÃ§Ãµes primeiro (opÃ§Ã£o 6).\n");
+                    printf("Defina o número de avaliações primeiro (opção 6).\n");
                     break;
                 }
 
@@ -190,7 +192,7 @@ void abrirTurma(int posTabela) {
 
                     for (int j = 0; j < capacidadeAlunoBD; j++) {
                         if (Repository_BD_Aluno[j].matricula == matricula) {
-                            printf("LanÃ§ando notas para: %s (MatrÃ­cula %d)\n", Repository_BD_Aluno[j].nome, matricula);
+                            printf("Lançando notas para: %s (Matrícula %d)\n", Repository_BD_Aluno[j].nome, matricula);
 
                             int slot = -1;
                             for (int n = 0; n < 10; n++) {
@@ -206,7 +208,7 @@ void abrirTurma(int posTabela) {
                             float soma = 0;
 
                             for (int k = 1; k <= nAvaliacoes; k++) {
-                                printf("Nota da AvaliaÃ§Ã£o %d: ", k);
+                                printf("Nota da Avaliação %d: ", k);
                                 scanf("%f", &Repository_BD_Aluno[j].notas[slot][k]);
                                 soma += Repository_BD_Aluno[j].notas[slot][k];
                             }
@@ -216,7 +218,7 @@ void abrirTurma(int posTabela) {
                         }
                     }
                 }
-                printf("Notas lanÃ§adas com sucesso.\n");
+                printf("Notas lançadas com sucesso.\n");
                 break;
             }
 
@@ -225,17 +227,21 @@ void abrirTurma(int posTabela) {
                 break;
 
             default:
-                printf("OpÃ§Ã£o invÃ¡lida!\n");
+                printf("Opção inválida!\n");
         }
 
     } while (op != 8);
 }
 int criarTurma(Professor p){
     int i;
+    
     for(i = 0; i < capacidadeDeTurmas; i++){
         
         if(Repository_BD_Turma[i].codigoDaTurma == 0){
             int val;
+            
+            printf("Digite o Nome Da Matéria:\n");
+            scanf(" %[^\n]",Repository_BD_Turma[i].nomeDaTurma);
             printf("Digite o numero de alunos inicialmente:\n");
             scanf("%d",&val);
             for(int j = 0; j < val; j++){
@@ -265,8 +271,6 @@ int criarTurma(Professor p){
             
             codrefT++;
             break;
-        }else{
-            printf("A posiÃ§Ã£o %d a lista de turmas esta ocupada", i);
         }
       
 

@@ -6,8 +6,8 @@
 #include "funcoes.h"
 #include "turma.h"
 
-//finaliza√ß√£o impar - Humanas
-//finaliza√ß√£o par - Exatas
+//finalizaÁ„o impar - Humanas
+//finalizaÁ„o par - Exatas
 char  *conversorDeMaterias(int code){
 
     switch (code)
@@ -16,20 +16,20 @@ char  *conversorDeMaterias(int code){
         return "ALgoritimos";
         break;
     case 2504://pre calculo
-        return "Pr√©-Calculo";
+        return "PrÈ-Calculo";
     break;
 
-    case 2506://Funamentos Matem√°ticos da Computa√ß√£o
+    case 2506://Funamentos Matem·ticos da ComputaÁ„o
 
-        return "Funamentos Matem√°ticos da Computa√ß√£o";
+        return "Fundamentos Matem·ticos da ComputaÁ„o";
     break;
-    case 2500://Funamentos da Computa√ß√£o
+    case 2500://Funamentos da ComputaÁ„o
     
-         return "Funamentos da Computa√ß√£o";
+         return "Fundamentos da ComputaÁ„o";
     break;
     case 2501://metodologia 
     
-        return "Metodologia Cient√≠fica";
+        return "Metodologia CientÌfica";
     break;
     
     default:
@@ -60,10 +60,10 @@ do{
     printf("\033[0;3%dm      adxnxnnda                \033[0m+-------------------------------------------------------------+\n",c);
     printf("\033[0;3%dm    xxxxxnxnnnnnn              \033[0m| ID:\t\t%d                                           \n",c,id);
     printf("\033[0;3%dm  axxxxu     unnnua            \033[0m| NOME:\t\t%s                                         \n",c,p.nome);
-    printf("\033[0;3%dm axxxxx       nnnuua           \033[0m| USU√ÅRIO:\t%s                                      \n",c,p.usuario);
+    printf("\033[0;3%dm axxxxx       nnnuua           \033[0m| USU¡RIO:\t%s                                      \n",c,p.usuario);
     printf("\033[0;3%dm hxxxxx.     .nnnuuh           \033[0m| CPF:\t\t%s                                          \n",c,p.cpf);
     printf("\033[0;3%dm axxxxxxuhqhunnnnuua           \033[0m+-------------------------------------------------------------+\n");
-    printf("\033[0;3%dm  xxxxa       annuu            \033[0mMat√©rias:\n");
+    printf("\033[0;3%dm  xxxxa       annuu            \033[0mMatÈrias:\n");
     printf("\033[0;3%dm   zx{         {nY             \033[0m",c);for(int i = 0; i < 3; i++){printf("%s ",conversorDeMaterias(p.materias[i]));};printf("\n");
     printf("\033[0;3%dm                               \033[0m",c);for(int i=3 ; i < 5; i++){printf("%s ",conversorDeMaterias(p.materias[i]));};
     printf("\n\n1-Criar uma nova turma       3-Cadastrar Alunos");
@@ -85,7 +85,7 @@ do{
         case 4:{
             system("cls");
             int codigo;
-            printf("Digite o c√≥digo da turma: ");
+            printf("Digite o cÛdigo da turma: ");
             scanf("%d", &codigo);
 
             int pos = -1;
@@ -99,13 +99,13 @@ do{
             if (pos != -1) {
                 abrirTurma(pos);
             } else {
-                printf("Turma com c√≥digo %d n√£o encontrada.\n", codigo);
+                printf("Turma com cÛdigo %d n„o encontrada.\n", codigo);
             }
             break;
         }
 
         default:
-            printf("Digite uma Alternativa v√°lida");
+            printf("Digite uma Alternativa v·lida");
     break;
     
 }
@@ -116,7 +116,6 @@ do{
 }
 int menu(){
 
-system("cls");
     int op = 0;
     char nome[20],senha[20];
     
@@ -137,15 +136,28 @@ system("cls");
 
     // Texto em negrito
     printf("\033[1;31mTexto vermelho em negrito\033[0m\n");*/
-    printf("=====================\n");
-    printf("BEM VINDO!:\n\n1-Logar\n2-Criar Conta\n3-sair\n");
-    printf("=====================\n");
+ printf("           #####                                             ####   \033[0;35m#############  ####                \033[0m\n");        
+ printf("          #######                                            ####   \033[0;35m############   ####                \033[0m\n");        
+ printf("          ### ####          ####        ######         ####  ####   \033[0;35m####           ####       ####     \033[0m\n");        
+ printf("         #### ####       ##########   ##########    #############   \033[0;35m####           ####    ##########  \033[0m\n");        
+ printf("        ####   ####     ####                 ####   ####    #####   \033[0;35m###########    ####           #### \033[0m\n");        
+ printf("       ####    #####   ####            ####  ####  ####      ####   \033[0;35m###########    ####     ####  #### \033[0m\n");        
+ printf("       #############   ####          ############  ####      ####   \033[0;35m####           ####   ############ \033[0m\n");        
+ printf("      ###############  #####         ####    ####   ####    #####   \033[0;35m####           ####   ###     #### \033[0m\n");        
+ printf("     ####         ####  ###########  ############   #############   \033[0;35m#############  #####  ############ \033[0m\n");        
+ printf("     ###          ####     ######      #####  ###     #####   ##    \033[0;35m ###########     ###    ####   ##  \033[0m\n");        
+ printf("===========================================================================================================\n");        
+ printf("===========================================================================================================\n");        
+ printf("                                   Aplicativo de Controle AcadÍmico                                      \n");        
+ printf("                             e Desempenho Educacional Ligado ‡ AvaliaÁ„o                             \n");        
+printf("BEM VINDO!\n\n1-Logar\n2-Criar Conta\n3-sair\n");                                                                               
+   
 
     scanf("%d",&op);
    switch (op){
         case 1:
             system("cls");
-            printf("Digite seu usu√°rio:\n");
+            printf("Digite seu usu·rio:\n");
             scanf(" %[^\n]",nome);
             printf("Digite sua senha:\n");
             scanf(" %[^\n]",senha);
@@ -158,13 +170,13 @@ system("cls");
                 areaDeTrabalhoProfessor(verificacao);
             }else{
                 system("cls");
-                printf("\033[0;31mUsu√°rio n√£o encontrado -ERRO 403-Procure a equipe t√©cnica\033[0m\n");
+                printf("\033[0;31mUsu·rio n„o encontrado -ERRO 403-Procure a equipe tÈcnica\033[0m\n");
             }
 
         break;
         case 2:
             system("cls");
-            cadastroDeProfessor(); //Chamada a fun√ß√£o
+            cadastroDeProfessor(); //Chamada a funÁ„o
              int idNovoProf = -1;
             //Vai recuperar o ID recem atribuido ao professor cadastrado
             for(int i = 0;i < capacidadeProfBD; i++){
@@ -174,13 +186,22 @@ system("cls");
             }
             if (idNovoProf != -1){
                 int qtdMaterias;
-                printf("Quantas mat√©rias esse professor ir√° ministrar ? (m√°x %d)\n", quantMaterias );
+                system("cls");
+                printf("Lista de MatÈrias DisponÌveis\n");
+                printf("+------------------------------------------------+\n");
+                printf("|2500 - Fundamentos da ComputaÁ„o              |\n");
+                printf("|2501 - Metodologia CientÌfica                  |\n");
+                printf("|2502 - ALgoritimos                              |\n");
+                printf("|2504 - Fundamentos Matem·ticos da ComputaÁ„o |\n");
+                printf("|2506 - PrÈ-C·lculo                            |\n");
+                printf("+------------------------------------------------+\n");
+                printf("Quantas matÈrias esse professor ir· ministrar ? (m·x %d)\n", quantMaterias );
                 scanf("%d", &qtdMaterias);
                 if (qtdMaterias>quantMaterias) qtdMaterias = quantMaterias;
 
                 for (int j = 0; j < qtdMaterias ; j++){
                     int codMateria;
-                    printf("Digite o c√≥digo da mat√©ria %d", j +1);
+                    printf("Digite o cÛdigo da matÈria %d\n", j +1);
                     scanf("%d", &codMateria);
 
                     for (int i = 0 ; i < capacidadeProfBD ; i++){
@@ -190,7 +211,7 @@ system("cls");
                     }
                 }
                 
-                printf("Professor cadastrado com sucesso e m√°terias atribuidas ! \n");
+                printf("Professor cadastrado com sucesso e m·terias atribuidas ! \n");
                   }else {
                     printf("Erro ao localizar o professor cadastrado.\n");
                 

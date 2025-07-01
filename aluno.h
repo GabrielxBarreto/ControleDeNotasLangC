@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <string.h>
 #define  capacidadeProfBD 20
-#define  quantMaterias 10
+#define  quantMaterias 5
 #define  capacidadeAlunoBD 20
 
 typedef struct{
@@ -14,7 +14,7 @@ typedef struct{
     int matricula;
     char nome[50];
     int materias[quantMaterias];
-    //a primeira coluna guarda o valor do cÃ³digo da turma e o resto guarda o seu conteudo de notas
+    //a primeira coluna guarda o valor do código da turma e o resto guarda o seu conteudo de notas
     float notas[10][10];
     float mediaFinal;
     //Relacionamento com o BD
@@ -31,11 +31,11 @@ int cadastrarAluno(){
 
     printf("Digite o nome do aluno : \n");
     scanf(" %[^\n]", aluno.nome);
-    /*printf("Digite o nÃºmero de matÃ©rias que o aluno cursa : \n");
+    /*printf("Digite o número de matérias que o aluno cursa : \n");
     scanf("%d", &n);
 
     for(int i=0;i<n;i++){
-        printf("DIgite o cÃ³digo da matÃ©ria :");
+        printf("DIgite o código da matéria :");
         scanf("%d", &aluno.materias[i]);
 
 
@@ -47,7 +47,7 @@ int cadastrarAluno(){
             strcpy(Repository_BD_Aluno[i].nome,aluno.nome);
             Repository_BD_Aluno[i].matricula = aluno.matricula;
             matriculaRef++;
-            printf("Aluno cadastrado com matrÃ­cula : %d", aluno.matricula);
+            printf("Aluno cadastrado com matrícula : %d", aluno.matricula);
             break;
         }
 
@@ -57,14 +57,14 @@ int cadastrarAluno(){
     return 0;
 
 }
-//FunÃ§Ã£o para a listagem dos alunos
+//Função para a listagem dos alunos
 
  int listarAlunos(){
     printf("\n---------LISTA DE ALUNOS CADASTRADOS NO SISTEMA----------\n");
     for(int i = 0;i < capacidadeAlunoBD;i++){
         
         if(Repository_BD_Aluno[i].matricula != 0){
-            printf("MatrÃ­cula %d | Nome : %s", 
+            printf("Matrícula %d | Nome : %s", 
                 Repository_BD_Aluno[i].matricula, Repository_BD_Aluno[i].nome);
                 printf("\n");
         }
@@ -72,7 +72,7 @@ int cadastrarAluno(){
     return 0;
  }
 
- //FunÃ§Ã£o para deletar o aluno atravÃ©s da matrÃ­cula
+ //Função para deletar o aluno através da matrícula
 
     int deletarAlunoPorMatricula(int matricula){
         for (int i = 0; i < capacidadeAlunoBD; i++){
@@ -82,7 +82,7 @@ int cadastrarAluno(){
                 for (int j = 0; j < capacidadeAlunoBD ; j++){
                     Repository_BD_Aluno[i].materias[j] = 0;
                 }
-                printf("Aluno com a matrÃ­cula %d deletado com sucesso !", matricula);
+                printf("Aluno com a matrícula %d deletado com sucesso !", matricula);
                 break ;
             }
             

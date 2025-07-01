@@ -1,6 +1,7 @@
 #ifndef PROFESSOR_H
 #define PROFESSOR_H
 #include <stdio.h>
+#include <ctype.h>
 #include <string.h>
 #define  capacidadeProfBD 20
 #define  capacidadeAlunoBD 20
@@ -18,6 +19,14 @@ typedef struct {
 
 Professor Repository_BD_Professor[capacidadeProfBD]; 
 
+void toLowerCase(char str[]) {
+    int i;
+    for (i = 0; str[i] != '\0'; i++) {
+        str[i] = tolower((unsigned char)str[i]);
+        
+    }
+    
+}
 int cadastroDeProfessor(){
     Professor professor;
     //int n = 0;
@@ -27,21 +36,27 @@ int cadastroDeProfessor(){
     scanf(" %[^\n]", professor.nome);
     printf("Digite o CPF do professor que Deseja cadastrar:\n");
     scanf(" %[^\n]", professor.cpf);
-    printf("Digite seu Usu√°rio:\n");
+    printf("Digite seu Usu·rio:\n");
     scanf(" %[^\n]", professor.usuario);
      printf("Digite sua senha:\n");
     scanf(" %[^\n]", professor.senha);
-    /*printf("\nDigite o n√∫mero de trumas que o professor %s deve assumir inicialmente:\n",professor.nome);
-    scanf("%d",&n);
-    for (int i = 0; i < n; i++)
-    {
-        printf("Digite o c√≥igo da turma:\n");
-        scanf("%d",&professor.materias[i]);
-    }*/
 
-    for (int i = 0; i < capacidadeProfBD; i++){
+    char usuarioLower[20];
+    char usuarioLowerBD[20];
+    int codeVerify = 0;
+    strcpy(usuarioLower, professor.usuario);
+    toLowerCase(usuarioLower);
 
-        if(Repository_BD_Professor[i].cpf[0] == 0){
+    for(int i = 0; i < capacidadeProfBD; i++){ 
+        strcpy(usuarioLowerBD, Repository_BD_Professor[i].usuario);
+        toLowerCase(usuarioLowerBD);
+
+        if(strcmp(usuarioLower,usuarioLowerBD) == 0 ){
+            codeVerify = -1;
+            printf("\033[0;31mUsu·rio j· existente! Cadastre Novamente!\033[0m\n");
+            cadastroDeProfessor();
+        }else{
+            if(Repository_BD_Professor[i].cpf[0] == 0){
             professor.id = idRef;
             Repository_BD_Professor[i].id = professor.id; 
             strcpy(Repository_BD_Professor[i].nome,professor.nome);
@@ -55,6 +70,13 @@ int cadastroDeProfessor(){
             idRef++;
             break;
         }
+        }      
+    }
+    
+
+    for (int i = 0; i < capacidadeProfBD; i++){
+
+        
     }
     
     return 0;
@@ -63,7 +85,7 @@ int listarProfessores(){
     
     for (int i = 0; i < capacidadeProfBD; i++){
     if(Repository_BD_Professor[i].id != 0){
-        printf("ID:%d   |NOME:%s  |CPF:%s  |C√≥digo de Mat√©rias:",Repository_BD_Professor[i].id,
+        printf("ID:%d   |NOME:%s  |CPF:%s  |CÛdigo de MatÈrias:",Repository_BD_Professor[i].id,
         Repository_BD_Professor[i].nome,
         Repository_BD_Professor[i].cpf);
         for(int j = 0; j < capacidadeProfBD; j++){
@@ -97,16 +119,18 @@ int deletePorID(int id){
     
     return 0;
 }
+
 int logar(char usuario[], char senha[]){
-   
+    int j;
     int codeVerify = 0;
     for(int i = 0; i < capacidadeProfBD; i++){ 
-      if((strcmp(Repository_BD_Professor[i].usuario,usuario)==0 && strcmp(Repository_BD_Professor[i].senha,senha) == 0) == 1){
-        codeVerify = Repository_BD_Professor[i].id;
-        break;
-      }else{
+    
+        if((strcmp(Repository_BD_Professor[i].usuario,usuario)==0 && strcmp(Repository_BD_Professor[i].senha,senha) == 0) == 1){
+            codeVerify = Repository_BD_Professor[i].id;
+            break;
+        }else{
         codeVerify = -1;
-      }
+      } 
     }
    return codeVerify;
 }
