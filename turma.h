@@ -101,7 +101,7 @@ int listarAlunosDaTurma(int posTabela){
     }
     return 0;
  }
-void abrirTurma(int posTabela) {
+void abrirTurma(int posTabela, Professor professorLogado) {
     int op;
 
     do {
@@ -155,21 +155,43 @@ void abrirTurma(int posTabela) {
                 break;
 
             case 5: {
-                system("cls");
-                int matricula, encontrado = 0;
-                printf("Digite a matrícula do aluno: ");
-                scanf("%d", &matricula);
-                for (int i = 0; i < capacidadeAlunoBD; i++) {
-                    if (Repository_BD_Aluno[i].matricula == matricula) {
-                        gerarRelatorioGeralDoAluno(Repository_BD_Aluno[i]);
-                        encontrado = 1;
-                        break;
-                    }
+    system("cls");
+    int matricula, encontrado = 0;
+    printf("Digite a matrícula do aluno: ");
+    scanf("%d", &matricula);
+
+    for (int i = 0; i < capacidadeAlunoBD; i++) {
+        if (Repository_BD_Aluno[i].matricula == matricula) {
+
+            // VERIFICA se o aluno pertence à turma
+            int alunoNaTurma = 0;
+            for (int t = 0; t < 40; t++) {
+                if (Repository_BD_Turma[posTabela].listaDeAlunosInscritos[t] == matricula) {
+                    alunoNaTurma = 1;
+                    break;
                 }
-                if (!encontrado)
-                    printf("Aluno com matrícula %d não encontrado!\n", matricula);
+            }
+
+            if (!alunoNaTurma) {
+                printf("Este aluno não pertence à turma %d!\n", Repository_BD_Turma[posTabela].codigoDaTurma);
                 break;
             }
+
+            gerarRelatorioGeralDoAluno(
+                Repository_BD_Aluno[i],
+                Repository_BD_Turma,
+                capacidadeDeTurmas,
+                professorLogado.id
+            );
+            encontrado = 1;
+            break;
+        }
+    }
+
+    if (!encontrado)
+        printf("Aluno com matrícula %d não encontrado!\n", matricula);
+    break;
+}
 
             case 6:
             system("cls");
