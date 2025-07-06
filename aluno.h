@@ -47,7 +47,7 @@ int cadastrarAluno(){
             strcpy(Repository_BD_Aluno[i].nome,aluno.nome);
             Repository_BD_Aluno[i].matricula = aluno.matricula;
             matriculaRef++;
-            printf("Aluno cadastrado com matrícula : %d", aluno.matricula);
+            printf("\033[0;32mAluno cadastrado com matrícula : %d\033[0m", aluno.matricula);
             break;
         }
 

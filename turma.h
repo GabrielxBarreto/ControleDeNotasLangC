@@ -1,4 +1,3 @@
-
 #ifndef TURMA_H
 #define TURMA_H
 #define capacidadeDeTurmas 10
@@ -106,13 +105,13 @@ void abrirTurma(int posTabela) {
 
     do {
         
-        printf("\n---------------------------- Menu da Turma [%d] -----------------------------------\n", Repository_BD_Turma[posTabela].codigoDaTurma);
-        printf("Nome:%s\t\tNúmero de Avaliações:%d\n",Repository_BD_Turma[posTabela].nomeDaTurma,Repository_BD_Turma[posTabela].nA);
+        printf("\n---------------------------- Menu da Turma [%d] -----------------------------------\n\n", Repository_BD_Turma[posTabela].codigoDaTurma);
+        printf("Nome:%s\t\tNúmero de Avaliações:%d\n\n",Repository_BD_Turma[posTabela].nomeDaTurma,Repository_BD_Turma[posTabela].nA);
         //listarAlunosDaTurma(posTabela);
         printf("1 - Visualizar Soma Total das Notas da Turma      5 - Gerar Relatório Geral do Aluno\n");
         printf("2 - Visualizar Soma das Notas por Aluno           6 - Definir Número de Avaliações\n");
         printf("3 - Mostrar Boletim Individual                    7 - Lançar Notas\n");
-        printf("4 - Visualizar Soma das Notas por Avaliação     8 - Sair da Turma\n");
+        printf("4 - Visualizar Soma das Notas por Avaliação       8 - Sair da Turma\n");
         
         
         
@@ -223,11 +222,13 @@ void abrirTurma(int posTabela) {
             }
 
             case 8:
+            system("cls");
                 printf("Saindo da turma...\n");
                 break;
 
             default:
-                printf("Opção inválida!\n");
+                system("cls");
+                printf("\033[0;31mOpção inválida!\033[0m\n");
         }
 
     } while (op != 8);
@@ -275,8 +276,8 @@ int criarTurma(Professor p){
       
 
     }
-    
-    printf("Turma com o cod: %d foi criada",Repository_BD_Turma[i].codigoDaTurma);
+    system("cls");
+    printf("\033[0;32mTurma com o cod: %d foi criada\033[0m",Repository_BD_Turma[i].codigoDaTurma);
     return i;
 }
 #endif

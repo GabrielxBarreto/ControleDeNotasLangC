@@ -36,7 +36,7 @@ int cadastroDeProfessor(){
     scanf(" %[^\n]", professor.nome);
     printf("Digite o CPF do professor que Deseja cadastrar:\n");
     scanf(" %[^\n]", professor.cpf);
-    printf("Digite seu Usu·rio:\n");
+    printf("Digite seu Usu√°rio:\n");
     scanf(" %[^\n]", professor.usuario);
      printf("Digite sua senha:\n");
     scanf(" %[^\n]", professor.senha);
@@ -53,7 +53,7 @@ int cadastroDeProfessor(){
 
         if(strcmp(usuarioLower,usuarioLowerBD) == 0 ){
             codeVerify = -1;
-            printf("\033[0;31mUsu·rio j· existente! Cadastre Novamente!\033[0m\n");
+            printf("\033[0;31mUsu√°rio j√° existente! Cadastre Novamente!\033[0m\n");
             cadastroDeProfessor();
         }else{
             if(Repository_BD_Professor[i].cpf[0] == 0){
@@ -72,20 +72,13 @@ int cadastroDeProfessor(){
         }
         }      
     }
-    
-
-    for (int i = 0; i < capacidadeProfBD; i++){
-
-        
-    }
-    
-    return 0;
+    return codeVerify;
 }
 int listarProfessores(){
     
     for (int i = 0; i < capacidadeProfBD; i++){
     if(Repository_BD_Professor[i].id != 0){
-        printf("ID:%d   |NOME:%s  |CPF:%s  |CÛdigo de MatÈrias:",Repository_BD_Professor[i].id,
+        printf("ID:%d   |NOME:%s  |CPF:%s  |CÔøΩdigo de MatÔøΩrias:",Repository_BD_Professor[i].id,
         Repository_BD_Professor[i].nome,
         Repository_BD_Professor[i].cpf);
         for(int j = 0; j < capacidadeProfBD; j++){
@@ -121,7 +114,7 @@ int deletePorID(int id){
 }
 
 int logar(char usuario[], char senha[]){
-    int j;
+    
     int codeVerify = 0;
     for(int i = 0; i < capacidadeProfBD; i++){ 
     

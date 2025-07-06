@@ -53,7 +53,7 @@ void somaTotalNotas(Turma *turma, Aluno alunos[], int totalAlunos){
             printf("\033[0;31mA média da turma é de reprovados!\033[0m\n");
         }
     } else {
-        printf("Nenhuma nota encontrada para calcular!!!!\n");
+        printf("\033[0;31mNenhuma nota encontrada para calcular!!!!\033[0m\n");
     }
 }
 
@@ -73,13 +73,14 @@ void somaNotasPorAluno(Turma *turma, Aluno alunos[], int totalAlunos){
                         break;
                     }
                 }
-                float media = soma / turma->nA;
-                printf("Aluno: %s | Matrícula: %d | Soma das notas: %.2f |Média : %.2f | Situação %s: \n", 
+                float media = 0.00;
+                media += soma / turma->nA;
+                printf("Aluno:\t%s\t | Matrícula:\t%d | Soma das notas:\t%.2f | Média :\t%.2f | Situação:\t%s \n", 
                     alunos[j].nome,
                     alunos[j].matricula,
                     soma,
                     media,
-                (media>=6 ? "\033[0;32mAprovado\033[0m" : "\033[0;31mReprovado033\033[0m"));
+                (media>=6 ? "\033[0;32mAprovado\033[0m" : "\033[0;31mReprovado\033[0m"));
                 break;
             }
         }
