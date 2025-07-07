@@ -217,7 +217,7 @@ void abrirTurma(int posTabela) {
                         }
                     }
                 }
-                printf("Notas lançadas com sucesso.\n");
+                printf("\033[0;32mNotas lançadas com sucesso.\033[0m\n");
                 break;
             }
 

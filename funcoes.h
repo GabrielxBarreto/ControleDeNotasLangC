@@ -139,10 +139,11 @@ void somaNotasPorAvaliacao(Turma *turma, Aluno alunos[], int totalAlunos){
             }
             }
             printf("Avaliação %d - Soma das notas: %.2f | Média: %.2f \n",a+1, soma, media ); 
-        if(acimaOuIgual > abaixo)
-            printf("\033[0;32mA maioria da turma está na média !\033[0m\n");
-            else if (abaixo>acimaOuIgual)
+        if(acimaOuIgual > abaixo){
+             printf("\033[0;32mA maioria da turma está na média !\033[0m\n");
+        }else if (abaixo>acimaOuIgual){
             printf("\033[0;31mA maioria da turma está abaixo da média.\033[0m\n");
+        }
            
         }
         
@@ -178,7 +179,7 @@ void mostrarBoletimIndividual(Aluno aluno, int codigoTurma, int nAvaliacoes){
     }
 
     if (indiceNota == -1) {
-        printf("Nenhuma nota encontrada para a turma %d do aluno %s.\n", codigoTurma, aluno.nome);
+        printf(printf("\033[0;31mNenhuma nota encontrada para a turma %d do aluno %s \033[0m\n"), codigoTurma, aluno.nome);
         return;
     }
 
